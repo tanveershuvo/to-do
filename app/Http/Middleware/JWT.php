@@ -13,7 +13,6 @@ class JWT
      * @param $request
      * @param Closure $next
      * @return mixed
-     * @throws JWTException
      */
     public function handle($request, Closure $next)
     {

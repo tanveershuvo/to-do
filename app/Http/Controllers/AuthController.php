@@ -2,11 +2,16 @@
 
 namespace App\Http\Controllers;
 
-
 use App\User;
+use Illuminate\Contracts\Auth\Guard;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Response;
+use Tymon\JWTAuth\Facades\JWTAuth;
+use Tymon\JWTAuth\Facades\JWTFactory;
 use App\Http\Controllers\Controller;
 
 class AuthController extends Controller
@@ -18,58 +23,62 @@ class AuthController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('JWT', ['except' => ['login','signIn']]);
-    }
-
-    /**
-     * Get a JWT via given credentials.
-     *
-     * @return JsonResponse
-     */
-    public function login()
-    {
-        $credentials = request(['email', 'password']);
-
-        if (! $token = auth()->attempt($credentials)) {
-            return response()->json(['error' => 'Unauthorized'], 401);
-        }
-
-        return $this->respondWithToken($token);
+        $this->middleware('JWT', ['except' => ['login','signup']]);
     }
 
 
     /**
      * @param Request $request
-     * @return JsonResponse
+     * @return Application|ResponseFactory|JsonResponse
      */
-    public function signIn(Request $request)
+    public function login(Request $request)
     {
-        User::create([
-            'name'=> $request['name'],
-            'email'=> $request['email'],
-            'password'=>$request['password']
+         $request->validate([
+            'email' => 'required|email',
+            'password' => 'required|min:6',
         ]);
-        return $this->login($request);
+
+        $credentials = $request->only('email', 'password');
+        if ($token = $this->guard()->attempt($credentials)) {
+            return $this->respondWithToken($token);
+        }
+        return response()->json(['errors' =>
+            ['msg'=>['Credential Mismatched !']]
+        ],
+            Response::HTTP_BAD_REQUEST);
     }
 
+    public function signup(Request $request){
+        $request->validate([
+            'name' => 'required|max:50',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:6|confirmed',
+        ]);
+        User::create($request->all());
+        return response()->json(['errors' =>
+            ['msg'=>['Registration Successful !']]
+        ],
+            Response::HTTP_BAD_REQUEST);
+
+    }
     /**
-     * Get the authenticated User.
+     * Get the authenticated User
      *
      * @return JsonResponse
      */
     public function me()
     {
-        return response()->json(auth()->user());
+        return response()->json($this->guard()->user());
     }
 
     /**
-     * Log the user out (Invalidate the token).
+     * Log the user out (Invalidate the token)
      *
      * @return JsonResponse
      */
     public function logout()
     {
-        auth()->logout();
+        $this->guard()->logout();
 
         return response()->json(['message' => 'Successfully logged out']);
     }
@@ -81,22 +90,33 @@ class AuthController extends Controller
      */
     public function refresh()
     {
-        return $this->respondWithToken(auth()->refresh());
+        return $this->respondWithToken($this->guard()->refresh());
     }
 
     /**
      * Get the token array structure.
      *
-     * @param string $token
+     * @param  string $token
      *
      * @return JsonResponse
      */
-    protected function respondWithToken(string $token)
+    protected function respondWithToken($token)
     {
         return response()->json([
             'access_token' => $token,
             'token_type' => 'bearer',
-            'expires_in' => auth()->factory()->getTTL() * 60
+            'expires_in' => JWTFactory::getTTL() * 60,
+            'user_name'=>auth()->user()->name,
         ]);
+    }
+
+    /**
+     * Get the guard to be used during authentication.
+     *
+     * @return Guard
+     */
+    public function guard()
+    {
+        return Auth::guard();
     }
 }

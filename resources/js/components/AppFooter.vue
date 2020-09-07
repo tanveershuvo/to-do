@@ -1,6 +1,7 @@
 <template>
     <v-card height="50">
         <v-footer
+            color="grey lighten-2"
             absolute
             class="font-weight-medium"
         >
@@ -8,14 +9,8 @@
                 class="text-center"
                 cols="12"
             >
-                <strong>Created By @Tanvir Rahman(Developer) - {{ new Date().getFullYear() }}</strong>
+                {{ new Date().getFullYear() }} — <strong>Developed by - Tanvir Rahman</strong>
             </v-col>
         </v-footer>
     </v-card>
 </template>
-
-<script>
-export default {
-
-}
-</script>

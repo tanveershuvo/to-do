@@ -19,16 +19,17 @@ use Illuminate\Support\Facades\Route;
 //});
 
 Route::group([
-
-    'middleware' => 'api',
+    'middleware'=>'api',
     'prefix' => 'auth'
+], function () {
 
-], function ($router) {
-
-    Route::post('login', 'AuthController@login');
-    Route::post('signin', 'AuthController@signIn');
-    Route::post('logout', 'AuthController@logout');
-    Route::post('refresh', 'AuthController@refresh');
-    Route::post('me', 'AuthController@me');
+    Route::post('/login', 'AuthController@login');
+    Route::post('/signup', 'AuthController@signup');
+    Route::post('/logout', 'AuthController@logout');
+    Route::post('/refresh', 'AuthController@refresh');
+    Route::post('/me', 'AuthController@me');
+    Route::post('/test', 'AuthController@me');
 
 });
+//Route::post('/login', 'APIController@login');
+//Route::post('/register', 'ApiController@register');

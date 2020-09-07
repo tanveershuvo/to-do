@@ -1,77 +1,111 @@
 <template>
-    <v-card
-        class="ma-6"
-        outlined
-        tile
-        fill-height
-    >
-        <v-container>
-    <ValidationObserver ref="observer" v-slot="{ validate, reset }">
-        <form>
-            <h1 class="my-4">Login Form</h1>
-            <ValidationProvider v-slot="{ errors }" name="email" rules="required|email">
+  <v-container>
+    <v-card class="ma-8 pa-3" outlined tile>
+        <ValidationObserver ref="observer" v-slot="{ validate, handleSubmit }">
+          <v-form @submit.prevent="handleSubmit(Submit)">
+          <h1 class="text-center">Login Form</h1>
+          <v-row class="justify-center">
+          <v-col cols="12" sm="6" md="8">
+              <div v-if="errorMessage" >
+                  <v-alert type="error">
+                      {{ errorMessage }}
+                  </v-alert>
+              </div>
+          </v-col>
+            <v-col cols="12" sm="6" md="8">
+                <ValidationProvider v-slot="{ errors }" name="email" rules="required|email">
                 <v-text-field
-                    v-model="email"
-                    :error-messages="errors"
-                    label="E-mail"
-                    required
-                    outlined
+                  v-model="form.email"
+                  :error-messages="errors"
+                  label="E-mail"
+                  outlined
+                  hide-details
                 ></v-text-field>
-            </ValidationProvider>
-            <ValidationProvider v-slot="{ errors }" name="password" rules="required">
+                <span class="red--text" >{{ errors[0] }}</span>
+                </ValidationProvider>
+            </v-col>
+            <v-col cols="12" sm="6" md="8">
+                <ValidationProvider v-slot="{ errors }" name="password" rules="required|min:6">
                 <v-text-field
-                    v-model="password"
-                    :error-messages="errors"
-                    label="Password"
-                    required
-                    outlined
-                    type="password"
+                  v-model="form.password"
+                  :error-messages="errors"
+                  :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
+                  :type="show ? 'text' : 'password'"
+                  label="Password"
+                  outlined
+                  hide-details
+                  @click:append="show = !show"
                 ></v-text-field>
-            </ValidationProvider>
-
-            <v-btn color="success" outlined class="pa-6" @click="submit">Log in</v-btn>
-        </form>
-    </ValidationObserver>
-    </v-container>
+                <span class="red--text">{{ errors[0] }}</span>
+                </ValidationProvider>
+            </v-col>
+            <v-col cols="12" sm="6" md="8">
+              <v-btn color="success" type="submit" class="pa-5" outlined>Log in</v-btn>
+            </v-col>
+          </v-row>
+        </v-form>
+        </ValidationObserver>
     </v-card>
+  </v-container>
 </template>
 
 <script>
-import { required, email, max } from 'vee-validate/dist/rules'
+import { required, email, min } from 'vee-validate/dist/rules'
 import { extend, ValidationObserver, ValidationProvider, setInteractionMode } from 'vee-validate'
+import User from '../../Helpers/User'
 
-setInteractionMode('eager')
+setInteractionMode("eager");
 
-extend('required', {
-    ...required,
-    message: '{_field_} can not be empty',
-})
+extend("required", {
+  ...required,
+  message: "{_field_} can not be empty",
+});
 
-extend('max', {
-    ...max,
-    message: '{_field_} may not be greater than {length} characters',
-})
+extend("min", {
+  ...min,
+  message: "{_field_} must not be less than {length} characters",
+});
 
-extend('email', {
-    ...email,
-    message: 'Email must be valid',
-})
+extend("email", {
+  ...email,
+  message: "Email must be valid",
+});
 
 export default {
-    components: {
-        ValidationProvider,
-        ValidationObserver,
+  components: {
+    ValidationProvider,
+    ValidationObserver,
+  },
+  data: () => ({
+      show: false,
+      errorMessage: null,
+    form: {
+      email: null,
+      password: null,
     },
-    data: () => ({
-        password: '',
-        email: '',
-    }),
+  }),
 
-    methods: {
-        submit () {
-            this.$refs.observer.validate()
+  methods: {
+    async Submit() {
+        let uri = "api/v1/auth/login";
+        axios
+            .post(uri, this.form)
+            .then((res) => User.responseAfterLogin(res))
+            .catch((error) =>
+                {
+                    let ms;
+                    Object.entries(error.response.data.errors).forEach(
+                        ([key, value]) => {
+                            ms = JSON.stringify(value);
+                            this.errorMessage  = ms.replace('[','').replace(']','').replace('"','').replace('"','');
+                        }
 
-        },
+                    );
+                }
+            );
     },
-}
+
+},
+};
 </script>
+

@@ -3,12 +3,19 @@
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
-
+// require('./boostrap');
 window.Vue = require('vue');
 
 import Vue from 'vue'
 import Vuetify from 'vuetify'
-Vue.use(Vuetify)
+import VueAxios from 'vue-axios'
+import axios from 'axios'
+window.axios = axios
+Vue.use(Vuetify,VueAxios, axios);
+
+
+import User from './Helpers/User'
+window.User = User
 const vuetify = new Vuetify();
 const opts = {}
 
