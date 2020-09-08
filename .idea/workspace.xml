@@ -20,29 +20,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9d9cea49-3100-4cc1-ac29-aaa87bde53b7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/js/Helpers/AppStorage.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/Helpers/Token.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/Helpers/User.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/seeds/TodoSeeder.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/components/AddTodo.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/components/Login/logout.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/components/Todolist.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AuthController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Kernel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/JWT.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/JWT.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/RedirectIfAuthenticated.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/RedirectIfAuthenticated.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/jwt.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/Helpers/Token.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Helpers/Token.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/Helpers/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Helpers/User.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/Router/Router.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Router/Router.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/bootstrap.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/bootstrap.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/AppFooter.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/AppFooter.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/Home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Home.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/Login/login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Login/login.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/SignUp/signup.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/SignUp/signup.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/Toolbar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Toolbar.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/welcome.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -59,8 +54,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Vue Single File Component" />
         <option value="JavaScript File" />
+        <option value="Vue Single File Component" />
       </list>
     </option>
   </component>
@@ -190,11 +185,15 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/database/seeds" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/database/seeds" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/resources/js" />
       <recent name="$PROJECT_DIR$/resources/js/components" />
@@ -217,7 +216,8 @@
       <updated>1599316799697</updated>
       <workItem from="1599316801536" duration="21994000" />
       <workItem from="1599406690534" duration="28736000" />
-      <workItem from="1599480313654" duration="25572000" />
+      <workItem from="1599480313654" duration="50417000" />
+      <workItem from="1599575104804" duration="8314000" />
     </task>
     <servers />
   </component>

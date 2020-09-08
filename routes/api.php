@@ -22,14 +22,13 @@ Route::group([
     'middleware'=>'api',
     'prefix' => 'auth'
 ], function () {
-
     Route::post('/login', 'AuthController@login');
     Route::post('/signup', 'AuthController@signup');
     Route::post('/logout', 'AuthController@logout');
     Route::post('/refresh', 'AuthController@refresh');
-    Route::post('/me', 'AuthController@me');
-    Route::post('/test', 'AuthController@me');
-
+    Route::post('/add-new-todo', 'TodoController@createTodo');
+    Route::get('/all-todos/{id}', 'TodoController@getAllTodos');
+    Route::delete('/destroy/{id}', 'TodoController@destroy');
 });
 //Route::post('/login', 'APIController@login');
 //Route::post('/register', 'ApiController@register');

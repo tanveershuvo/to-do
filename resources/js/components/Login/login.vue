@@ -84,13 +84,20 @@ export default {
       password: null,
     },
   }),
-
+    created() {
+        if(User.loggedIn()){
+            this.$router.push({name:'Home'})
+        }
+    },
   methods: {
     async Submit() {
         let uri = "api/v1/auth/login";
         axios
             .post(uri, this.form)
-            .then((res) => User.responseAfterLogin(res))
+            .then((res) => {
+                User.responseAfterLogin(res)
+                this.$router.push({name:'Home'})
+            })
             .catch((error) =>
                 {
                     let ms;

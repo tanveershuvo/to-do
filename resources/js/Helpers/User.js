@@ -3,11 +3,12 @@ import AppStorage from "./AppStorage";
 
 class User{
     responseAfterLogin(res) {
-        const access_token = res.data.access_token;
-        const user = res.data.user_name;
-        let a;
+        const access_token = res.data.access_token
+        const user = res.data.user_name
+
         if (Token.isValid(access_token)) {
-            return AppStorage.store(user, access_token)
+            AppStorage.store(user, access_token)
+            window.location='/home'
         }
         return false;
     }
@@ -23,6 +24,7 @@ class User{
     }
     logOut(){
         AppStorage.clear();
+        window.location='/'
     }
     name(){
         if(this.loggedIn()){

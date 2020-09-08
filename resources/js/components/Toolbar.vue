@@ -7,28 +7,21 @@
     >
         <v-toolbar color="grey lighten-3" dense>
             <v-toolbar-title class="mx-10">
-                <router-link tag="span" to="/">
                     Simple to-do
-                </router-link>
             </v-toolbar-title>
-            <router-link tag="span" to="/">
-                <v-btn text>
-                    <v-icon>mdi-home</v-icon>
-                    <span>Home</span>
-                </v-btn>
-            </router-link>
+
             <v-spacer></v-spacer>
             <div class="">
-                <router-link tag="span" to="/login">
-                    <v-btn color="indigo" text>
-                        <v-icon>mdi-login</v-icon>
-                        <span>Log In</span>
-                    </v-btn>
-                </router-link>
-                <router-link tag="span" to="/signup">
-                    <v-btn color="success" text>
-                        <v-icon>mdi-account-multiple </v-icon>
-                        <span>Sign Up</span>
+
+                <router-link
+                    tag="span"
+                    v-for="item in items"
+                    :key="item.title"
+                    :to="item.to"
+                    v-if="item.show"
+                >
+                    <v-btn text>
+                        {{item.title}}
                     </v-btn>
                 </router-link>
             </div>
@@ -37,8 +30,26 @@
 </template>
 
 <script>
+import User from "../Helpers/User";
+import Home from "./Home";
 export default {
-    name: "toolbar"
+    name: "toolbar",
+    data(){
+        return {
+            items:[
+                { title:'Home',to:'/home',show:User.loggedIn()},
+                { title:'Login',to:'/',show:!User.loggedIn()},
+                { title:'SignUp',to:'/signup',show:!User.loggedIn()},
+                { title:'logout',to:'/logout',show:User.loggedIn()},
+            ]
+        }
+    },
+    created(){
+        EventBus.$on('logout',() =>{
+            User.logOut()
+            }
+        )
+    }
 }
 </script>
 

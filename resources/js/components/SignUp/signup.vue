@@ -122,21 +122,29 @@ export default {
     },
     data: () => ({
         form:{
-            password: '',
             email: '',
             name: '',
+            password: '',
             password_confirmation: '',
         },
         errorMessage: null,
         show1: false,
         show2: false,
     }),
+    created() {
+        if(User.loggedIn()){
+            this.$router.push({name:'Home'})
+        }
+    },
     methods: {
         async Register () {
             let uri = "api/v1/auth/signup";
             axios
                 .post(uri, this.form)
-                .then((res) => User.responseAfterLogin(res))
+                .then((res) => {
+                    User.responseAfterLogin(res)
+                    this.$router.push({name:'Home'})
+                })
                 .catch((error) =>
                     {
                         let ms;

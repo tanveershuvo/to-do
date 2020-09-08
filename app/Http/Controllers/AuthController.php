@@ -37,15 +37,13 @@ class AuthController extends Controller
             'email' => 'required|email',
             'password' => 'required|min:6',
         ]);
-
         $credentials = $request->only('email', 'password');
         if ($token = $this->guard()->attempt($credentials)) {
             return $this->respondWithToken($token);
         }
         return response()->json(['errors' =>
             ['msg'=>['Credential Mismatched !']]
-        ],
-            Response::HTTP_BAD_REQUEST);
+        ], Response::HTTP_BAD_REQUEST);
     }
 
     public function signup(Request $request){
@@ -55,10 +53,8 @@ class AuthController extends Controller
             'password' => 'required|min:6|confirmed',
         ]);
         User::create($request->all());
-        return response()->json(['errors' =>
-            ['msg'=>['Registration Successful !']]
-        ],
-            Response::HTTP_BAD_REQUEST);
+        //dd($request->only('email', 'password'));
+        return $this->login($request);
 
     }
     /**
