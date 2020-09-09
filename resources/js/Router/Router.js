@@ -3,9 +3,9 @@ import VueRouter from 'vue-router'
 
 Vue.use(VueRouter)
 
-import Login from '../components/Login/login.vue'
-import Logout from '../components/Login/logout.vue'
-import Signup from '../components/SignUp/signup.vue'
+import Login from '../components/Auth/login.vue'
+import Logout from '../components/Auth/logout.vue'
+import Signup from '../components/Auth/signup.vue'
 import Home from '../components/Home.vue'
 const routes = [
      { path: '/', component: Login , name:'Login'},

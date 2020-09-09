@@ -11,100 +11,50 @@
                 </v-btn>
             </template>
             <v-card>
-                <ValidationObserver ref="observer" v-slot="{ validate, handleSubmit }">
-                    <v-form @submit.prevent="handleSubmit(Submit)">
-                <v-card-title>
-                    <span class="headline">New todo</span>
-                </v-card-title>
-                <v-card-text>
-                    <v-container>
-                        <v-form ref="form">
-                            <ValidationProvider v-slot="{ errors }" name="title" rules="required|max:50">
-                                <v-text-field
-                                    label="Title *"
-                                    outlined
-                                    v-model="form.title"
-                                    :error-messages="errors"
-                                    class="mb-2"
-                                >
-                                </v-text-field>
-                            </ValidationProvider>
-                            <ValidationProvider v-slot="{ errors }" name="details" rules="max:250">
-                                <v-textarea
-                                    label="Description"
-                                    outlined
-                                    rows="4"
-                                    row-height="15"
-                                    hide-details
-                                    v-model="form.details"
-                                    :error-messages="errors"
-                                ></v-textarea>
-                            </ValidationProvider>
-                        </v-form>
-                    </v-container>
-                </v-card-text>
-                <v-card-actions>
-                    <v-spacer></v-spacer>
-                    <v-btn color="red lighten-2" @click="dialog = false" >Close</v-btn>
-                    <v-btn color="blue lighten-2" type="submit">Save</v-btn>
-                </v-card-actions>
-                    </v-form>
-                </ValidationObserver>
+                <todoform></todoform>
             </v-card>
         </v-dialog>
     </v-row>
 </template>
 
 <script>
-import { required, max } from 'vee-validate/dist/rules'
-import { extend, ValidationObserver, ValidationProvider, setInteractionMode } from 'vee-validate'
-import User from "../Helpers/User"
 
-setInteractionMode("eager");
-
-extend("required", {
-    ...required,
-    message: "{_field_} can not be empty",
-});
-
-extend("max", {
-    ...max,
-    message: "{_field_} must not be more than {length} characters",
-});
+import todoform from "./TodoForm";
+import User from "../Helpers/User";
 
 export default {
     components: {
-        ValidationProvider,
-        ValidationObserver,
+        todoform
     },
     name: "AddTodo",
     data: () => ({
         dialog: false,
-        form:{
-            title:null,
-            details:null,
-            user_id:User.user_id(),
-        }
     }),
+    created(){
+        EventBus.$on('addNewTodo',(data) =>{
+                //Event on TodoForm Component
+                this.Submit(data)
+            }
+        )
+        EventBus.$on('closeModal',(data) =>{
+                //Event on TodoForm Component
+                this.dialog = false
+            }
+        )
+    },
     methods:{
-        async Submit() {
-            let uri = "api/v1/auth/add-new-todo";
+        async Submit(data) {
+            let uri = "api/v1/add-new-todo";
             axios
-                .post(uri, this.form)
+                .post(uri, data)
                 .then((res) => {
-                    this.updateData(res.data)
+                    EventBus.$emit('updateAfterAdd', res.data)
+                    EventBus.$emit('resetForm')
                     this.dialog = false
-                    this.$refs.form.reset()
-                }).catch((error) => console.log(error.response.data.message)
+                }).catch((error) => console.log(error)
                 )
-        },
-        updateData(data){
-            this.$emit('updateData', data)
         },
     }
 }
 </script>
 
-<style scoped>
-
-</style>

@@ -30,8 +30,8 @@
 </template>
 
 <script>
-import User from "../Helpers/User";
-import Home from "./Home";
+import User from "../../Helpers/User";
+import Home from "../Home";
 export default {
     name: "toolbar",
     data(){
@@ -40,7 +40,7 @@ export default {
                 { title:'Home',to:'/home',show:User.loggedIn()},
                 { title:'Login',to:'/',show:!User.loggedIn()},
                 { title:'SignUp',to:'/signup',show:!User.loggedIn()},
-                { title:'logout',to:'/logout',show:User.loggedIn()},
+                { title:'Logout',to:'/logout',show:User.loggedIn()},
             ]
         }
     },

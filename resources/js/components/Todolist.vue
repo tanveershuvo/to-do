@@ -18,10 +18,10 @@
                         cols="1"
                         md="1"
                     >
-                        <v-btn class="mx-6" fab dark small color="cyan">
+                        <v-btn class="mx-6" fab dark small @click="edit" color="cyan">
                             <v-icon dark>mdi-pencil</v-icon>
                         </v-btn>
-
+                        <edittodo></edittodo>
                     </v-col>
                     <v-col
                         cols="1"
@@ -38,18 +38,22 @@
                 </v-card-text>
             </v-card>
         </v-col>
+
 </template>
 
 <script>
-import addtodo from "./AddTodo";
+import addtodo from "./AddTodo"
+import edittodo from "./EditTodo"
+import todoform from "./TodoForm"
+import User from "../Helpers/User";
 
 export default {
-    components:{addtodo},
+    components:{addtodo,edittodo,todoform},
     name: "Todolist",
     props:['todolist'],
     methods:{
         async destroy() {
-            let uri = "api/v1/auth/destroy/";
+            let uri = "api/v1/destroy/";
             axios
                 .delete(uri + this.todolist.id)
                 .then((res) => {
@@ -58,8 +62,20 @@ export default {
             )
         },
         updateRecord(id){
-            this.$emit('updateRecord',id)
+            EventBus.$emit('updateAfterDel', id)
         },
+        async edit(){
+            let uri = "api/v1/get-todo/";
+            axios
+                .get(uri + this.todolist.id)
+                .then((res) => {
+                    this.sendData(res.data)
+                }).catch((error) => console.log(error.response.data.message)
+            )
+        },
+        sendData(data){
+            EventBus.$emit('singleElementData', data)
+        }
     }
 }
 </script>

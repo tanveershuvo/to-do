@@ -1,11 +1,9 @@
 <template>
-
     <v-card
         class="ma-6"
         outlined
         tile
     >
-
     <v-container>
         <v-row class="py-2">
             <v-col cols="6">
@@ -14,7 +12,6 @@
             <v-col cols="6">
                 <addtodo
                     class="float-right"
-                    v-on:updateData="newData"
                 ></addtodo>
             </v-col>
         </v-row>
@@ -23,7 +20,6 @@
             v-for="todolist of todolists"
             :key="todolist.id"
             :todolist=todolist
-            v-on:updateRecord="delData"
         ></todolist>
         </v-row>
         </v-container>
@@ -42,33 +38,37 @@ export default {
         name: User.name(),
         todolists:{},
     }),
-
     methods:{
-        loginChecker(){
-            if (!User.loggedIn()) {
-                this.$router.push({name: 'Login'});
-            }
-        },
-        getData(){
-            let uri = "api/v1/auth/all-todos/";
-            axios
-                .get(uri + User.user_id())
-                .then((res) => this.todolists = res.data)
-                .catch((error) => console.log(error.response.data))
-        },
-        newData(data){
+         updatedData(data){
             this.todolists.unshift(data);
-        },
-        delData(id){
+         },
+         delData(id){
             let index = this.todolists.findIndex(todolist => todolist.id === id)
             this.todolists.splice(index,1);
-        }
-
+         }
     },
-    mounted() {
-        this.loginChecker()
-        this.getData()
-    }
+    created(){
+        if (!User.loggedIn()) {
+            this.$router.push({name: 'auth'});
+        }
+        let uri = "api/v1/all-todos/";
+        axios
+            .get(uri + User.user_id())
+            .then((res) => this.todolists = res.data)
+            .catch((error) => console.log(error.response.data))
+
+        EventBus.$on('updateAfterAdd',(data) =>{
+            //Event on AddTodo Component
+                this.updatedData(data)
+            }
+        )
+        EventBus.$on('updateAfterDel',(id) =>{
+            //Event on TodoList Component
+                this.delData(id)
+            }
+        )
+    },
+
 }
 </script>
 

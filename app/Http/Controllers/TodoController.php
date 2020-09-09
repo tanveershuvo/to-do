@@ -25,8 +25,13 @@ class TodoController extends Controller
     }
 
     public function destroy($id){
-        $val = Todo::where('id',$id)->delete();
-        return response()->json($val,Response::HTTP_OK);
+        $data = Todo::where('id',$id)->delete();
+        return response()->json($data,Response::HTTP_OK);
+
+    }
+    public function getTodo($id){
+        $data = Todo::where('id',$id)->first();
+        return response()->json($data,Response::HTTP_OK);
 
     }
 }
