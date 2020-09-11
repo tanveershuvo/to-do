@@ -1923,13 +1923,54 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _TodoForm__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./TodoForm */ "./resources/js/components/TodoForm.vue");
-/* harmony import */ var _Helpers_User__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Helpers/User */ "./resources/js/Helpers/User.js");
+/* harmony import */ var vee_validate__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vee-validate */ "./node_modules/vee-validate/dist/vee-validate.esm.js");
+/* harmony import */ var vee_validate_dist_rules__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vee-validate/dist/rules */ "./node_modules/vee-validate/dist/rules.js");
+/* harmony import */ var _Helpers_User__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../Helpers/User */ "./resources/js/Helpers/User.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -1951,31 +1992,35 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 
 
+
+
+Object(vee_validate__WEBPACK_IMPORTED_MODULE_2__["setInteractionMode"])("eager");
+Object(vee_validate__WEBPACK_IMPORTED_MODULE_2__["extend"])("required", _objectSpread(_objectSpread({}, vee_validate_dist_rules__WEBPACK_IMPORTED_MODULE_3__["required"]), {}, {
+  message: "{_field_} can not be empty"
+}));
+Object(vee_validate__WEBPACK_IMPORTED_MODULE_2__["extend"])("max", _objectSpread(_objectSpread({}, vee_validate_dist_rules__WEBPACK_IMPORTED_MODULE_3__["max"]), {}, {
+  message: "{_field_} must not be more than {length} characters"
+}));
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
-    todoform: _TodoForm__WEBPACK_IMPORTED_MODULE_1__["default"]
+    todoform: _TodoForm__WEBPACK_IMPORTED_MODULE_1__["default"],
+    ValidationProvider: vee_validate__WEBPACK_IMPORTED_MODULE_2__["ValidationProvider"],
+    ValidationObserver: vee_validate__WEBPACK_IMPORTED_MODULE_2__["ValidationObserver"]
   },
   name: "AddTodo",
   data: function data() {
     return {
-      dialog: false
+      dialog: false,
+      form: {
+        title: null,
+        details: null,
+        user_id: _Helpers_User__WEBPACK_IMPORTED_MODULE_4__["default"].user_id()
+      }
     };
   },
-  created: function created() {
-    var _this = this;
-
-    EventBus.$on('addNewTodo', function (data) {
-      //Event on TodoForm Component
-      _this.Submit(data);
-    });
-    EventBus.$on('closeModal', function (data) {
-      //Event on TodoForm Component
-      _this.dialog = false;
-    });
-  },
   methods: {
-    Submit: function Submit(data) {
-      var _this2 = this;
+    submit: function submit() {
+      var _this = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
         var uri;
@@ -1984,10 +2029,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context.prev = _context.next) {
               case 0:
                 uri = "api/v1/add-new-todo";
-                axios.post(uri, data).then(function (res) {
+                axios.post(uri, _this.form).then(function (res) {
                   EventBus.$emit('updateAfterAdd', res.data);
-                  EventBus.$emit('resetForm');
-                  _this2.dialog = false;
+                  _this.form.title = null;
+                  _this.form.details = null;
+                  _this.dialog = false;
                 })["catch"](function (error) {
                   return console.log(error);
                 });
@@ -2412,84 +2458,106 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_2__["extend"])('email', _objectSpre
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _TodoForm__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./TodoForm */ "./resources/js/components/TodoForm.vue");
-/* harmony import */ var _Helpers_User__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Helpers/User */ "./resources/js/Helpers/User.js");
+/* harmony import */ var _Todolist__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Todolist */ "./resources/js/components/Todolist.vue");
+/* harmony import */ var vee_validate_dist_rules__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vee-validate/dist/rules */ "./node_modules/vee-validate/dist/rules.js");
+/* harmony import */ var vee_validate__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vee-validate */ "./node_modules/vee-validate/dist/vee-validate.esm.js");
+/* harmony import */ var _Helpers_User__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Helpers/User */ "./resources/js/Helpers/User.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
+Object(vee_validate__WEBPACK_IMPORTED_MODULE_2__["setInteractionMode"])("eager");
+Object(vee_validate__WEBPACK_IMPORTED_MODULE_2__["extend"])("required", _objectSpread(_objectSpread({}, vee_validate_dist_rules__WEBPACK_IMPORTED_MODULE_1__["required"]), {}, {
+  message: "{_field_} can not be empty"
+}));
+Object(vee_validate__WEBPACK_IMPORTED_MODULE_2__["extend"])("max", _objectSpread(_objectSpread({}, vee_validate_dist_rules__WEBPACK_IMPORTED_MODULE_1__["max"]), {}, {
+  message: "{_field_} must not be more than {length} characters"
+}));
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
-    todoform: _TodoForm__WEBPACK_IMPORTED_MODULE_1__["default"]
+    todolist: _Todolist__WEBPACK_IMPORTED_MODULE_0__["default"],
+    ValidationProvider: vee_validate__WEBPACK_IMPORTED_MODULE_2__["ValidationProvider"],
+    ValidationObserver: vee_validate__WEBPACK_IMPORTED_MODULE_2__["ValidationObserver"]
   },
   name: "EditTodo",
   data: function data() {
     return {
-      lsingletodo: {},
-      dialog: false
+      modal: false,
+      data: null,
+      form: {
+        title: null,
+        details: null,
+        user_id: _Helpers_User__WEBPACK_IMPORTED_MODULE_3__["default"].user_id()
+      }
     };
   },
   created: function created() {
     var _this = this;
 
-    EventBus.$on('addNewTodo', function (data) {
-      //Event on TodoForm Component
-      _this.Submit(data);
-    });
-    EventBus.$on('closeModal', function () {
-      //Event on TodoForm Component
-      _this.dialog = false;
-    });
-    EventBus.$on('singleElementData', function (data) {
-      //Event on TodoForm Component
-      _this.showData(data);
+    EventBus.$on('editFormData', function (data) {
+      _this.form.title = data.title;
+      _this.form.details = data.details;
+      _this.modal = true;
     });
   },
   methods: {
-    showData: function showData(data) {
-      this.lsingletodo = data; //console.log(this.singleTodo)
-
-      this.dialog = true;
-    },
-    Submit: function Submit(data) {// let uri = "api/v1/add-new-
-      // axios
-      //     .post(uri, data)
-      //     .then((res) => {
-      //         EventBus.$emit('updateAfterAdd', res.data)
-      //         EventBus.$emit('resetForm')
-      //         this.dialog = false
-      //     }).catch((error) => console.log(error)
-      // )
-
-      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-              case "end":
-                return _context.stop();
-            }
-          }
-        }, _callee);
-      }))();
-    }
+    editTodo: function editTodo() {}
   }
 });
 
@@ -2507,8 +2575,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Helpers_User__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Helpers/User */ "./resources/js/Helpers/User.js");
 /* harmony import */ var _Todolist__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Todolist */ "./resources/js/components/Todolist.vue");
 /* harmony import */ var _AddTodo__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./AddTodo */ "./resources/js/components/AddTodo.vue");
-//
-//
 //
 //
 //
@@ -2760,6 +2826,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 
 
@@ -2771,15 +2838,13 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_2__["extend"])("max", _objectSpread
   message: "{_field_} must not be more than {length} characters"
 }));
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "todoform",
   components: {
     ValidationProvider: vee_validate__WEBPACK_IMPORTED_MODULE_2__["ValidationProvider"],
     ValidationObserver: vee_validate__WEBPACK_IMPORTED_MODULE_2__["ValidationObserver"]
   },
-  props: ['singleTodo'],
   data: function data() {
     return {
-      edit: false,
+      modal: false,
       form: {
         title: null,
         details: null,
@@ -2787,29 +2852,25 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_2__["extend"])("max", _objectSpread
       }
     };
   },
+  props: ['todolist'],
   created: function created() {
-    var _this = this;
-
-    EventBus.$on('resetForm', function () {
-      //Event on TodoList Component
-      _this.$refs.form.reset();
-    });
-
-    if (this.singleTodo != null) {
-      this.form.title = this.singleTodo.title;
-      this.form.details = this.singleTodo.details;
+    // console.log(this.todolist)
+    if (this.todolist != null) {
+      this.form.title = this.todolist.title;
+      this.form.details = this.todolist.details;
+      this.modal = true; // console.log(this.todolist.title)
     }
   },
   methods: {
     Submit: function Submit() {
-      var _this2 = this;
+      var _this = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                EventBus.$emit('addNewTodo', _this2.form);
+                EventBus.$emit('addNewTodo', _this.form);
 
               case 1:
               case "end":
@@ -2819,14 +2880,19 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_2__["extend"])("max", _objectSpread
         }, _callee);
       }))();
     },
-    closeModal: function closeModal() {
-      // this.formReset()
-      EventBus.$emit('closeModal');
-    } // formReset(){
-    //      this.form.title='';
-    //      this.form.details='';
-    // }
-
+    addCloseModal: function addCloseModal() {
+      this.resetForm();
+      EventBus.$emit('addCloseModal');
+    },
+    editCloseModal: function editCloseModal() {
+      this.resetForm();
+      EventBus.$emit('editCloseModal');
+    },
+    resetForm: function resetForm() {
+      this.form.title = '';
+      this.form.details = '';
+      this.modal = false;
+    }
   }
 });
 
@@ -2907,6 +2973,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     todoform: _TodoForm__WEBPACK_IMPORTED_MODULE_3__["default"]
   },
   name: "Todolist",
+  data: function data() {
+    return {
+      editData: null
+    };
+  },
   props: ['todolist'],
   methods: {
     destroy: function destroy() {
@@ -2936,32 +3007,20 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     updateRecord: function updateRecord(id) {
       EventBus.$emit('updateAfterDel', id);
     },
-    edit: function edit() {
+    edit: function edit(id) {
       var _this2 = this;
 
-      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
-        var uri;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
-          while (1) {
-            switch (_context2.prev = _context2.next) {
-              case 0:
-                uri = "api/v1/get-todo/";
-                axios.get(uri + _this2.todolist.id).then(function (res) {
-                  _this2.sendData(res.data);
-                })["catch"](function (error) {
-                  return console.log(error.response.data.message);
-                });
+      var uri = "api/v1/get-todo/";
+      axios.get(uri + id).then(function (res) {
+        console.log(res.data);
 
-              case 2:
-              case "end":
-                return _context2.stop();
-            }
-          }
-        }, _callee2);
-      }))();
+        _this2.sendData(res.data);
+      })["catch"](function (error) {
+        return console.log(error.response.data.message);
+      });
     },
     sendData: function sendData(data) {
-      EventBus.$emit('singleElementData', data);
+      EventBus.$emit('editFormData', data);
     }
   }
 });
@@ -6947,37 +7006,26 @@ var render = function() {
     { attrs: { justify: "center" } },
     [
       _c(
+        "v-btn",
+        {
+          attrs: { color: "primary" },
+          on: {
+            click: function($event) {
+              _vm.dialog = true
+            }
+          }
+        },
+        [
+          _c("v-icon", [_vm._v("mdi-calendar-plus")]),
+          _vm._v(" Add new todo\n    ")
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
         "v-dialog",
         {
-          attrs: { persistent: "", "max-width": "600px" },
-          scopedSlots: _vm._u([
-            {
-              key: "activator",
-              fn: function(ref) {
-                var on = ref.on
-                var attrs = ref.attrs
-                return [
-                  _c(
-                    "v-btn",
-                    _vm._g(
-                      _vm._b(
-                        { attrs: { color: "primary" } },
-                        "v-btn",
-                        attrs,
-                        false
-                      ),
-                      on
-                    ),
-                    [
-                      _c("v-icon", [_vm._v("mdi-calendar-plus")]),
-                      _vm._v(" Add new todo\n            ")
-                    ],
-                    1
-                  )
-                ]
-              }
-            }
-          ]),
+          attrs: { "max-width": "600px" },
           model: {
             value: _vm.dialog,
             callback: function($$v) {
@@ -6986,7 +7034,175 @@ var render = function() {
             expression: "dialog"
           }
         },
-        [_vm._v(" "), _c("v-card", [_c("todoform")], 1)],
+        [
+          _c(
+            "v-card",
+            [
+              _c("ValidationObserver", {
+                ref: "observer",
+                scopedSlots: _vm._u([
+                  {
+                    key: "default",
+                    fn: function(ref) {
+                      var validate = ref.validate
+                      var handleSubmit = ref.handleSubmit
+                      return [
+                        _c(
+                          "v-form",
+                          {
+                            ref: "form",
+                            attrs: { name: "form" },
+                            on: {
+                              submit: function($event) {
+                                $event.preventDefault()
+                                return handleSubmit(_vm.submit)
+                              }
+                            }
+                          },
+                          [
+                            _c("v-card-title", [
+                              _c("span", { staticClass: "headline" }, [
+                                _vm._v("From")
+                              ])
+                            ]),
+                            _vm._v(" "),
+                            _c(
+                              "v-card-text",
+                              [
+                                _c(
+                                  "v-container",
+                                  [
+                                    _c("ValidationProvider", {
+                                      attrs: {
+                                        name: "title",
+                                        rules: "required|max:50"
+                                      },
+                                      scopedSlots: _vm._u(
+                                        [
+                                          {
+                                            key: "default",
+                                            fn: function(ref) {
+                                              var errors = ref.errors
+                                              return [
+                                                _c("v-text-field", {
+                                                  staticClass: "mb-2",
+                                                  attrs: {
+                                                    label: "Title *",
+                                                    outlined: "",
+                                                    "error-messages": errors
+                                                  },
+                                                  model: {
+                                                    value: _vm.form.title,
+                                                    callback: function($$v) {
+                                                      _vm.$set(
+                                                        _vm.form,
+                                                        "title",
+                                                        $$v
+                                                      )
+                                                    },
+                                                    expression: "form.title"
+                                                  }
+                                                })
+                                              ]
+                                            }
+                                          }
+                                        ],
+                                        null,
+                                        true
+                                      )
+                                    }),
+                                    _vm._v(" "),
+                                    _c("ValidationProvider", {
+                                      attrs: {
+                                        name: "details",
+                                        rules: "max:250"
+                                      },
+                                      scopedSlots: _vm._u(
+                                        [
+                                          {
+                                            key: "default",
+                                            fn: function(ref) {
+                                              var errors = ref.errors
+                                              return [
+                                                _c("v-textarea", {
+                                                  attrs: {
+                                                    label: "Description",
+                                                    outlined: "",
+                                                    rows: "4",
+                                                    "row-height": "15",
+                                                    "hide-details": "",
+                                                    "error-messages": errors
+                                                  },
+                                                  model: {
+                                                    value: _vm.form.details,
+                                                    callback: function($$v) {
+                                                      _vm.$set(
+                                                        _vm.form,
+                                                        "details",
+                                                        $$v
+                                                      )
+                                                    },
+                                                    expression: "form.details"
+                                                  }
+                                                })
+                                              ]
+                                            }
+                                          }
+                                        ],
+                                        null,
+                                        true
+                                      )
+                                    })
+                                  ],
+                                  1
+                                )
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-card-actions",
+                              [
+                                _c("v-spacer"),
+                                _vm._v(" "),
+                                _c(
+                                  "v-btn",
+                                  {
+                                    attrs: { color: "red lighten-2" },
+                                    on: {
+                                      click: function($event) {
+                                        _vm.dialog = false
+                                      }
+                                    }
+                                  },
+                                  [_vm._v("Close")]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "v-btn",
+                                  {
+                                    attrs: {
+                                      color: "blue lighten-2",
+                                      type: "submit"
+                                    }
+                                  },
+                                  [_vm._v("Save")]
+                                )
+                              ],
+                              1
+                            )
+                          ],
+                          1
+                        )
+                      ]
+                    }
+                  }
+                ])
+              })
+            ],
+            1
+          )
+        ],
         1
       )
     ],
@@ -7621,17 +7837,181 @@ var render = function() {
         {
           attrs: { "max-width": "600px" },
           model: {
-            value: _vm.dialog,
+            value: _vm.modal,
             callback: function($$v) {
-              _vm.dialog = $$v
+              _vm.modal = $$v
             },
-            expression: "dialog"
+            expression: "modal"
           }
         },
         [
           _c(
             "v-card",
-            [_c("todoform", { attrs: { singleTodo: _vm.lsingletodo } })],
+            [
+              _c("ValidationObserver", {
+                ref: "observer",
+                scopedSlots: _vm._u([
+                  {
+                    key: "default",
+                    fn: function(ref) {
+                      var validate = ref.validate
+                      var handleSubmit = ref.handleSubmit
+                      return [
+                        _c(
+                          "v-form",
+                          {
+                            ref: "form",
+                            attrs: { name: "form" },
+                            on: {
+                              submit: function($event) {
+                                $event.preventDefault()
+                                return handleSubmit(_vm.editTodo)
+                              }
+                            }
+                          },
+                          [
+                            _c("v-card-title", [
+                              _c("span", { staticClass: "headline" }, [
+                                _vm._v("From")
+                              ])
+                            ]),
+                            _vm._v(" "),
+                            _c(
+                              "v-card-text",
+                              [
+                                _c(
+                                  "v-container",
+                                  [
+                                    _c("ValidationProvider", {
+                                      attrs: {
+                                        name: "title",
+                                        rules: "required|max:50"
+                                      },
+                                      scopedSlots: _vm._u(
+                                        [
+                                          {
+                                            key: "default",
+                                            fn: function(ref) {
+                                              var errors = ref.errors
+                                              return [
+                                                _c("v-text-field", {
+                                                  staticClass: "mb-2",
+                                                  attrs: {
+                                                    label: "Title *",
+                                                    outlined: "",
+                                                    "error-messages": errors
+                                                  },
+                                                  model: {
+                                                    value: _vm.form.title,
+                                                    callback: function($$v) {
+                                                      _vm.$set(
+                                                        _vm.form,
+                                                        "title",
+                                                        $$v
+                                                      )
+                                                    },
+                                                    expression: "form.title"
+                                                  }
+                                                })
+                                              ]
+                                            }
+                                          }
+                                        ],
+                                        null,
+                                        true
+                                      )
+                                    }),
+                                    _vm._v(" "),
+                                    _c("h1"),
+                                    _vm._v(" "),
+                                    _c("ValidationProvider", {
+                                      attrs: {
+                                        name: "details",
+                                        rules: "max:250"
+                                      },
+                                      scopedSlots: _vm._u(
+                                        [
+                                          {
+                                            key: "default",
+                                            fn: function(ref) {
+                                              var errors = ref.errors
+                                              return [
+                                                _c("v-textarea", {
+                                                  attrs: {
+                                                    label: "Description",
+                                                    outlined: "",
+                                                    rows: "4",
+                                                    "row-height": "15",
+                                                    "hide-details": "",
+                                                    "error-messages": errors
+                                                  },
+                                                  model: {
+                                                    value: _vm.form.details,
+                                                    callback: function($$v) {
+                                                      _vm.$set(
+                                                        _vm.form,
+                                                        "details",
+                                                        $$v
+                                                      )
+                                                    },
+                                                    expression: "form.details"
+                                                  }
+                                                })
+                                              ]
+                                            }
+                                          }
+                                        ],
+                                        null,
+                                        true
+                                      )
+                                    })
+                                  ],
+                                  1
+                                )
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-card-actions",
+                              [
+                                _c("v-spacer"),
+                                _vm._v(" "),
+                                _c(
+                                  "v-btn",
+                                  {
+                                    attrs: { color: "red lighten-2" },
+                                    on: {
+                                      click: function($event) {
+                                        _vm.modal = false
+                                      }
+                                    }
+                                  },
+                                  [_vm._v("EClose")]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "v-btn",
+                                  {
+                                    attrs: {
+                                      color: "blue lighten-2",
+                                      type: "submit"
+                                    }
+                                  },
+                                  [_vm._v("Save")]
+                                )
+                              ],
+                              1
+                            )
+                          ],
+                          1
+                        )
+                      ]
+                    }
+                  }
+                ])
+              })
+            ],
             1
           )
         ],
@@ -7896,7 +8276,7 @@ var render = function() {
               },
               [
                 _c("v-card-title", [
-                  _c("span", { staticClass: "headline" }, [_vm._v("New todo")])
+                  _c("span", { staticClass: "headline" }, [_vm._v("From")])
                 ]),
                 _vm._v(" "),
                 _c(
@@ -7988,9 +8368,13 @@ var render = function() {
                       "v-btn",
                       {
                         attrs: { color: "red lighten-2" },
-                        on: { click: _vm.closeModal }
+                        on: {
+                          click: function($event) {
+                            return _vm.$emit("hideModal")
+                          }
+                        }
                       },
-                      [_vm._v("Close")]
+                      [_vm._v("EClose")]
                     ),
                     _vm._v(" "),
                     _c(
@@ -8073,7 +8457,11 @@ var render = function() {
                     {
                       staticClass: "mx-6",
                       attrs: { fab: "", dark: "", small: "", color: "cyan" },
-                      on: { click: _vm.edit }
+                      on: {
+                        click: function($event) {
+                          return _vm.edit(_vm.todolist.id)
+                        }
+                      }
                     },
                     [
                       _c("v-icon", { attrs: { dark: "" } }, [

@@ -10,9 +10,7 @@
                 <h3 class="indigo--text float-left">Welcome {{name}}! </h3>
             </v-col>
             <v-col cols="6">
-                <addtodo
-                    class="float-right"
-                ></addtodo>
+                <addtodo class="float-right"></addtodo>
             </v-col>
         </v-row>
         <v-row>

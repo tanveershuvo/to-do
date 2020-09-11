@@ -2,7 +2,7 @@
     <ValidationObserver ref="observer" v-slot="{ validate, handleSubmit }">
         <v-form ref="form" name="form" @submit.prevent="handleSubmit(Submit)">
             <v-card-title>
-                <span class="headline">New todo</span>
+                <span class="headline">From</span>
             </v-card-title>
             <v-card-text>
                 <v-container>
@@ -16,6 +16,7 @@
                         >
                         </v-text-field>
                     </ValidationProvider>
+
                     <ValidationProvider v-slot="{ errors }" name="details" rules="max:250">
                         <v-textarea
                             label="Description"
@@ -31,7 +32,7 @@
             </v-card-text>
             <v-card-actions>
                 <v-spacer></v-spacer>
-                <v-btn color="red lighten-2" @click="closeModal">Close</v-btn>
+                    <v-btn color="red lighten-2" @click="$emit('hideModal')" >EClose</v-btn>
                 <v-btn color="blue lighten-2" type="submit">Save</v-btn>
             </v-card-actions>
         </v-form>
@@ -56,46 +57,45 @@ extend("max", {
 });
 
 export default {
-    name: "todoform",
     components: {
         ValidationProvider,
         ValidationObserver,
     },
-    props:['singleTodo'],
     data: () => ({
-        edit: false,
+        modal: false,
         form:{
             title:null,
             details:null,
             user_id:User.user_id(),
         },
     }),
-    created(){
-        EventBus.$on('resetForm',() =>{
-                //Event on TodoList Component
-                this.$refs.form.reset()
-            }
-        )
-        if(this.singleTodo!=null){
-            this.form.title = this.singleTodo.title
-            this.form.details = this.singleTodo.details
+    props:['todolist'],
+    created() {
+       // console.log(this.todolist)
+        if(this.todolist!=null){
+            this.form.title = this.todolist.title
+            this.form.details = this.todolist.details
+            this.modal = true
+           // console.log(this.todolist.title)
         }
-
-
     },
     methods:{
          async Submit(){
              EventBus.$emit('addNewTodo', this.form)
          },
-         closeModal(){
-            // this.formReset()
-            EventBus.$emit('closeModal')
+          addCloseModal(){
+             this.resetForm()
+             EventBus.$emit('addCloseModal')
         },
-        // formReset(){
-        //      this.form.title='';
-        //      this.form.details='';
-        // }
-
+         editCloseModal(){
+            this.resetForm()
+            EventBus.$emit('editCloseModal')
+        },
+        resetForm(){
+            this.form.title = ''
+            this.form.details = ''
+            this.modal = false
+        }
     }
 }
 </script>

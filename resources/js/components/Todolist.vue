@@ -18,7 +18,7 @@
                         cols="1"
                         md="1"
                     >
-                        <v-btn class="mx-6" fab dark small @click="edit" color="cyan">
+                        <v-btn class="mx-6" fab dark small @click="edit(todolist.id)" color="cyan">
                             <v-icon dark>mdi-pencil</v-icon>
                         </v-btn>
                         <edittodo></edittodo>
@@ -50,6 +50,9 @@ import User from "../Helpers/User";
 export default {
     components:{addtodo,edittodo,todoform},
     name: "Todolist",
+    data: () => ({
+        editData: null,
+    }),
     props:['todolist'],
     methods:{
         async destroy() {
@@ -57,24 +60,25 @@ export default {
             axios
                 .delete(uri + this.todolist.id)
                 .then((res) => {
-                    this.updateRecord(this.todolist.id)
+                     this.updateRecord(this.todolist.id)
                 }).catch((error) => console.log(error.response.data.message)
             )
         },
         updateRecord(id){
             EventBus.$emit('updateAfterDel', id)
         },
-        async edit(){
+         edit(id){
             let uri = "api/v1/get-todo/";
             axios
-                .get(uri + this.todolist.id)
+                .get(uri + id)
                 .then((res) => {
+                    console.log(res.data)
                     this.sendData(res.data)
                 }).catch((error) => console.log(error.response.data.message)
             )
         },
         sendData(data){
-            EventBus.$emit('singleElementData', data)
+            EventBus.$emit('editFormData', data)
         }
     }
 }
