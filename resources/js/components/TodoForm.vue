@@ -58,6 +58,7 @@ extend("max", {
 
 export default {
     components: {
+
         ValidationProvider,
         ValidationObserver,
     },

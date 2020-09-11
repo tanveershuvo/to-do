@@ -2536,6 +2536,7 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_2__["extend"])("max", _objectSpread
     ValidationObserver: vee_validate__WEBPACK_IMPORTED_MODULE_2__["ValidationObserver"]
   },
   name: "EditTodo",
+  props: ['editdata'],
   data: function data() {
     return {
       modal: false,
@@ -2548,13 +2549,7 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_2__["extend"])("max", _objectSpread
     };
   },
   created: function created() {
-    var _this = this;
-
-    EventBus.$on('editFormData', function (data) {
-      _this.form.title = data.title;
-      _this.form.details = data.details;
-      _this.modal = true;
-    });
+    this.form.title = this.editdata;
   },
   methods: {
     editTodo: function editTodo() {}
@@ -2575,6 +2570,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Helpers_User__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Helpers/User */ "./resources/js/Helpers/User.js");
 /* harmony import */ var _Todolist__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Todolist */ "./resources/js/components/Todolist.vue");
 /* harmony import */ var _AddTodo__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./AddTodo */ "./resources/js/components/AddTodo.vue");
+/* harmony import */ var _EditTodo__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./EditTodo */ "./resources/js/components/EditTodo.vue");
 //
 //
 //
@@ -2601,6 +2597,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+
 
 
 
@@ -2608,15 +2607,21 @@ __webpack_require__.r(__webpack_exports__);
   name: "home",
   components: {
     todolist: _Todolist__WEBPACK_IMPORTED_MODULE_1__["default"],
-    addtodo: _AddTodo__WEBPACK_IMPORTED_MODULE_2__["default"]
+    addtodo: _AddTodo__WEBPACK_IMPORTED_MODULE_2__["default"],
+    edittodo: _EditTodo__WEBPACK_IMPORTED_MODULE_3__["default"]
   },
   data: function data() {
     return {
       name: _Helpers_User__WEBPACK_IMPORTED_MODULE_0__["default"].name(),
-      todolists: {}
+      todolists: {},
+      editdata: {},
+      editModal: false
     };
   },
   methods: {
+    updateForm: function updateForm() {
+      this.editModal = true;
+    },
     updatedData: function updatedData(data) {
       this.todolists.unshift(data);
     },
@@ -2649,6 +2654,9 @@ __webpack_require__.r(__webpack_exports__);
     EventBus.$on('updateAfterDel', function (id) {
       //Event on TodoList Component
       _this.delData(id);
+    });
+    EventBus.$on('editFormData', function (data) {
+      _this.editdata = data;
     });
   }
 });
@@ -2910,9 +2918,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _AddTodo__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AddTodo */ "./resources/js/components/AddTodo.vue");
-/* harmony import */ var _EditTodo__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./EditTodo */ "./resources/js/components/EditTodo.vue");
-/* harmony import */ var _TodoForm__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./TodoForm */ "./resources/js/components/TodoForm.vue");
-/* harmony import */ var _Helpers_User__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../Helpers/User */ "./resources/js/Helpers/User.js");
+/* harmony import */ var _TodoForm__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./TodoForm */ "./resources/js/components/TodoForm.vue");
+/* harmony import */ var _Helpers_User__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Helpers/User */ "./resources/js/Helpers/User.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -2965,12 +2972,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 
-
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
     addtodo: _AddTodo__WEBPACK_IMPORTED_MODULE_1__["default"],
-    edittodo: _EditTodo__WEBPACK_IMPORTED_MODULE_2__["default"],
-    todoform: _TodoForm__WEBPACK_IMPORTED_MODULE_3__["default"]
+    todoform: _TodoForm__WEBPACK_IMPORTED_MODULE_2__["default"]
   },
   name: "Todolist",
   data: function data() {
@@ -8082,7 +8087,11 @@ var render = function() {
           )
         ],
         1
-      )
+      ),
+      _vm._v(" "),
+      (_vm.editModal = true)
+        ? _c("edittodo", { attrs: { editdata: _vm.editdata } })
+        : _vm._e()
     ],
     1
   )
@@ -8437,11 +8446,11 @@ var render = function() {
                   _vm._v(" "),
                   _c("v-card-subtitle", [
                     _vm._v(
-                      "\n                        Posted : " +
+                      "\n                            Posted : " +
                         _vm._s(_vm.todolist.created_at) +
                         ", Updated : " +
                         _vm._s(_vm.todolist.updated_at) +
-                        "\n                    "
+                        "\n                        "
                     )
                   ])
                 ],
@@ -8469,9 +8478,7 @@ var render = function() {
                       ])
                     ],
                     1
-                  ),
-                  _vm._v(" "),
-                  _c("edittodo")
+                  )
                 ],
                 1
               ),
@@ -8503,9 +8510,9 @@ var render = function() {
           _vm._v(" "),
           _c("v-card-text", { staticClass: "text-subtitle-2" }, [
             _vm._v(
-              "\n               " +
+              "\n                   " +
                 _vm._s(_vm.todolist.details) +
-                "\n            "
+                "\n                "
             )
           ])
         ],

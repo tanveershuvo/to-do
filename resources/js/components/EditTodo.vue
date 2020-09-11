@@ -73,6 +73,7 @@ export default {
         ValidationObserver,
     },
     name: "EditTodo",
+    props:['editdata'],
     data: () => ({
         modal: false,
         data:null,
@@ -82,13 +83,8 @@ export default {
             user_id:User.user_id(),
         },
     }),
-    created(){
-       EventBus.$on('editFormData',(data)=>{
-           this.form.title = data.title
-           this.form.details = data.details
-           this.modal = true;
-        }
-       )
+    created() {
+         this.form.title = this.editdata
     },
     methods:{
         editTodo(){

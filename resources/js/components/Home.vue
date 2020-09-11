@@ -21,22 +21,30 @@
         ></todolist>
         </v-row>
         </v-container>
+        <edittodo v-if="editModal=true" :editdata="editdata"></edittodo>
     </v-card>
+
 </template>
 
 <script>
 import User from "../Helpers/User";
 import todolist from "./Todolist"
 import addtodo from "./AddTodo"
+import edittodo from "./EditTodo";
 
 export default {
     name: "home",
-    components:{todolist,addtodo},
+    components:{todolist,addtodo, edittodo},
     data: () => ({
         name: User.name(),
         todolists:{},
+        editdata:{},
+        editModal: false,
     }),
     methods:{
+        updateForm(){
+            this.editModal=true;
+        },
          updatedData(data){
             this.todolists.unshift(data);
          },
@@ -63,6 +71,10 @@ export default {
         EventBus.$on('updateAfterDel',(id) =>{
             //Event on TodoList Component
                 this.delData(id)
+            }
+        )
+        EventBus.$on('editFormData',(data)=>{
+            this.editdata = data
             }
         )
     },

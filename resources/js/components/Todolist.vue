@@ -21,7 +21,7 @@
                         <v-btn class="mx-6" fab dark small @click="edit(todolist.id)" color="cyan">
                             <v-icon dark>mdi-pencil</v-icon>
                         </v-btn>
-                        <edittodo></edittodo>
+<!--                        <edittodo></edittodo>-->
                     </v-col>
                     <v-col
                         cols="1"
@@ -43,12 +43,11 @@
 
 <script>
 import addtodo from "./AddTodo"
-import edittodo from "./EditTodo"
 import todoform from "./TodoForm"
 import User from "../Helpers/User";
 
 export default {
-    components:{addtodo,edittodo,todoform},
+    components:{addtodo,todoform},
     name: "Todolist",
     data: () => ({
         editData: null,
