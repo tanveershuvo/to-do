@@ -1,5 +1,6 @@
 <template>
     <v-row >
+
         <v-dialog v-model="modal"  max-width="600px">
             <v-card>
                 <ValidationObserver ref="observer" v-slot="{ validate, handleSubmit }">
@@ -13,7 +14,7 @@
                                     <v-text-field
                                         label="Title *"
                                         outlined
-                                        v-model="form.title"
+                                        v-model="items.title"
                                         :error-messages="errors"
                                         class="mb-2"
                                     >
@@ -29,7 +30,7 @@
                                         rows="4"
                                         row-height="15"
                                         hide-details
-                                        v-model="form.details"
+                                        v-model="items.details"
                                         :error-messages="errors"
                                     ></v-textarea>
                                 </ValidationProvider>
@@ -73,27 +74,35 @@ export default {
         ValidationObserver,
     },
     name: "EditTodo",
-    props:{
-        editdata:{
-            Object
-        }
-    },
     data: () => ({
         modal: false,
         data:null,
-        form:{
+        items:{
+            id:null,
             title:null,
             details:null,
             user_id:User.user_id(),
         },
     }),
     created() {
-        console.log(this.$props.editdata)
-         //this.form.title = this.editdata
+        EventBus.$on('editdata',(data)=>{
+            this.items.id = data.id
+            this.items.title = data.title
+            this.items.details = data.details
+            this.modal = true
+            }
+        )
     },
     methods:{
         editTodo(){
-
+            let uri = "api/v1/update-todo";
+            axios
+                .post(uri , this.items)
+                .then((res) => {
+                    this.modal = false
+                    EventBus.$emit('updateAfterUpdate', res.data)
+                }).catch((error) => console.log(error.response.data.message)
+            )
         }
     }
 }

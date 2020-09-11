@@ -21,7 +21,7 @@
         ></todolist>
         </v-row>
         </v-container>
-        <edittodo :editdata="editdata"></edittodo>
+        <edittodo></edittodo>
     </v-card>
 
 </template>
@@ -48,6 +48,9 @@ export default {
          updatedData(data){
             this.todolists.unshift(data);
          },
+        updateAfterUpdate(id){
+            //this.todolists.find(todolist => todolist.id === id);
+        },
          delData(id){
             let index = this.todolists.findIndex(todolist => todolist.id === id)
             this.todolists.splice(index,1);
@@ -68,6 +71,11 @@ export default {
                 this.updatedData(data)
             }
         )
+        EventBus.$on('updateAfterUpdate',(id) =>{
+            //Event on AddTodo Component
+            this.updateAfterUpdate(id)
+        }
+    )
         EventBus.$on('updateAfterDel',(id) =>{
             //Event on TodoList Component
                 this.delData(id)
@@ -75,7 +83,7 @@ export default {
         )
         EventBus.$on('editFormData',(data)=>{
             //console.log(data)
-            this.editdata = data
+            EventBus.$emit('editdata', data)
             //console.log(this.editdata)
             }
         )

@@ -2518,6 +2518,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 
 
@@ -2536,16 +2537,12 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_2__["extend"])("max", _objectSpread
     ValidationObserver: vee_validate__WEBPACK_IMPORTED_MODULE_2__["ValidationObserver"]
   },
   name: "EditTodo",
-  props: {
-    editdata: {
-      Object: Object
-    }
-  },
   data: function data() {
     return {
       modal: false,
       data: null,
-      form: {
+      items: {
+        id: null,
         title: null,
         details: null,
         user_id: _Helpers_User__WEBPACK_IMPORTED_MODULE_3__["default"].user_id()
@@ -2553,10 +2550,27 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_2__["extend"])("max", _objectSpread
     };
   },
   created: function created() {
-    console.log(this.$props.editdata); //this.form.title = this.editdata
+    var _this = this;
+
+    EventBus.$on('editdata', function (data) {
+      _this.items.id = data.id;
+      _this.items.title = data.title;
+      _this.items.details = data.details;
+      _this.modal = true;
+    });
   },
   methods: {
-    editTodo: function editTodo() {}
+    editTodo: function editTodo() {
+      var _this2 = this;
+
+      var uri = "api/v1/update-todo";
+      axios.post(uri, this.items).then(function (res) {
+        _this2.modal = false;
+        EventBus.$emit('updateAfterUpdate', res.data);
+      })["catch"](function (error) {
+        return console.log(error.response.data.message);
+      });
+    }
   }
 });
 
@@ -2629,6 +2643,8 @@ __webpack_require__.r(__webpack_exports__);
     updatedData: function updatedData(data) {
       this.todolists.unshift(data);
     },
+    updateAfterUpdate: function updateAfterUpdate(id) {//this.todolists.find(todolist => todolist.id === id);
+    },
     delData: function delData(id) {
       var index = this.todolists.findIndex(function (todolist) {
         return todolist.id === id;
@@ -2655,13 +2671,17 @@ __webpack_require__.r(__webpack_exports__);
       //Event on AddTodo Component
       _this.updatedData(data);
     });
+    EventBus.$on('updateAfterUpdate', function (id) {
+      //Event on AddTodo Component
+      _this.updateAfterUpdate(id);
+    });
     EventBus.$on('updateAfterDel', function (id) {
       //Event on TodoList Component
       _this.delData(id);
     });
     EventBus.$on('editFormData', function (data) {
       //console.log(data)
-      _this.editdata = data; //console.log(this.editdata)
+      EventBus.$emit('editdata', data); //console.log(this.editdata)
     });
   }
 });
@@ -7911,15 +7931,15 @@ var render = function() {
                                                     "error-messages": errors
                                                   },
                                                   model: {
-                                                    value: _vm.form.title,
+                                                    value: _vm.items.title,
                                                     callback: function($$v) {
                                                       _vm.$set(
-                                                        _vm.form,
+                                                        _vm.items,
                                                         "title",
                                                         $$v
                                                       )
                                                     },
-                                                    expression: "form.title"
+                                                    expression: "items.title"
                                                   }
                                                 })
                                               ]
@@ -7955,15 +7975,15 @@ var render = function() {
                                                     "error-messages": errors
                                                   },
                                                   model: {
-                                                    value: _vm.form.details,
+                                                    value: _vm.items.details,
                                                     callback: function($$v) {
                                                       _vm.$set(
-                                                        _vm.form,
+                                                        _vm.items,
                                                         "details",
                                                         $$v
                                                       )
                                                     },
-                                                    expression: "form.details"
+                                                    expression: "items.details"
                                                   }
                                                 })
                                               ]
@@ -8093,7 +8113,7 @@ var render = function() {
         1
       ),
       _vm._v(" "),
-      _c("edittodo", { attrs: { editdata: _vm.editdata } })
+      _c("edittodo")
     ],
     1
   )

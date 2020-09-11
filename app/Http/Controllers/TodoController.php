@@ -32,6 +32,15 @@ class TodoController extends Controller
     public function getTodo($id){
         $data = Todo::where('id',$id)->first();
         return response()->json($data,Response::HTTP_OK);
-
+    }
+    public function updateTodo(Request $request){
+        $val = $request->validate([
+            'title'=>'required|max:50',
+            'details'=>'max:250',
+            'user_id'=>'',
+            'id'=>''
+        ]);
+        $data = Todo::where('id',$val['id'])->update($val);
+        return response()->json($data,Response::HTTP_OK);
     }
 }
