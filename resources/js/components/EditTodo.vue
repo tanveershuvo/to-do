@@ -73,7 +73,11 @@ export default {
         ValidationObserver,
     },
     name: "EditTodo",
-    props:['editdata'],
+    props:{
+        editdata:{
+            Object
+        }
+    },
     data: () => ({
         modal: false,
         data:null,
@@ -84,7 +88,8 @@ export default {
         },
     }),
     created() {
-         this.form.title = this.editdata
+        console.log(this.$props.editdata)
+         //this.form.title = this.editdata
     },
     methods:{
         editTodo(){

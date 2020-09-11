@@ -2536,7 +2536,11 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_2__["extend"])("max", _objectSpread
     ValidationObserver: vee_validate__WEBPACK_IMPORTED_MODULE_2__["ValidationObserver"]
   },
   name: "EditTodo",
-  props: ['editdata'],
+  props: {
+    editdata: {
+      Object: Object
+    }
+  },
   data: function data() {
     return {
       modal: false,
@@ -2549,7 +2553,7 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_2__["extend"])("max", _objectSpread
     };
   },
   created: function created() {
-    this.form.title = this.editdata;
+    console.log(this.$props.editdata); //this.form.title = this.editdata
   },
   methods: {
     editTodo: function editTodo() {}
@@ -2656,7 +2660,8 @@ __webpack_require__.r(__webpack_exports__);
       _this.delData(id);
     });
     EventBus.$on('editFormData', function (data) {
-      _this.editdata = data;
+      //console.log(data)
+      _this.editdata = data; //console.log(this.editdata)
     });
   }
 });
@@ -3017,8 +3022,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       var uri = "api/v1/get-todo/";
       axios.get(uri + id).then(function (res) {
-        console.log(res.data);
-
+        //propconsole.log(res.data)
         _this2.sendData(res.data);
       })["catch"](function (error) {
         return console.log(error.response.data.message);
@@ -8089,9 +8093,7 @@ var render = function() {
         1
       ),
       _vm._v(" "),
-      (_vm.editModal = true)
-        ? _c("edittodo", { attrs: { editdata: _vm.editdata } })
-        : _vm._e()
+      _c("edittodo", { attrs: { editdata: _vm.editdata } })
     ],
     1
   )

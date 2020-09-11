@@ -21,7 +21,7 @@
         ></todolist>
         </v-row>
         </v-container>
-        <edittodo v-if="editModal=true" :editdata="editdata"></edittodo>
+        <edittodo :editdata="editdata"></edittodo>
     </v-card>
 
 </template>
@@ -74,7 +74,9 @@ export default {
             }
         )
         EventBus.$on('editFormData',(data)=>{
+            //console.log(data)
             this.editdata = data
+            //console.log(this.editdata)
             }
         )
     },

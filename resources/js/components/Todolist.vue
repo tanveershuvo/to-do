@@ -71,7 +71,7 @@ export default {
             axios
                 .get(uri + id)
                 .then((res) => {
-                    console.log(res.data)
+                    //propconsole.log(res.data)
                     this.sendData(res.data)
                 }).catch((error) => console.log(error.response.data.message)
             )
