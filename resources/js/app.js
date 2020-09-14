@@ -6,11 +6,11 @@
 
 // require('./boostrap');
 window.Vue = require('vue');
-
 import Vue from 'vue'
 import Vuetify from 'vuetify'
 import VueAxios from 'vue-axios'
 import axios from 'axios'
+
 window.axios = axios
 
 Vue.use(Vuetify,VueAxios, axios);

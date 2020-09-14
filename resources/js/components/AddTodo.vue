@@ -40,8 +40,8 @@
                         </v-card-text>
                         <v-card-actions>
                             <v-spacer></v-spacer>
-                            <v-btn color="red lighten-2" @click="dialog=false" >Close</v-btn>
-                            <v-btn color="blue lighten-2" type="submit">Save</v-btn>
+                            <v-btn color="red lighten-1" @click="dialog=false" >Close</v-btn>
+                            <v-btn color="green lighten-1" type="submit">Save</v-btn>
                         </v-card-actions>
                     </v-form>
                 </ValidationObserver>

@@ -38,8 +38,8 @@
                         </v-card-text>
                         <v-card-actions>
                             <v-spacer></v-spacer>
-                            <v-btn color="red lighten-2" @click="modal = false" >EClose</v-btn>
-                            <v-btn color="blue lighten-2" type="submit">Save</v-btn>
+                            <v-btn color="red lighten-1" @click="modal = false" >Close</v-btn>
+                            <v-btn color="green lighten-1" type="submit">Save</v-btn>
                         </v-card-actions>
                     </v-form>
                 </ValidationObserver>
@@ -100,8 +100,9 @@ export default {
                 .post(uri , this.items)
                 .then((res) => {
                     this.modal = false
-                    EventBus.$emit('updateAfterUpdate', res.data)
-                }).catch((error) => console.log(error.response.data.message)
+                    EventBus.$emit('updateAfterUpdate',res.data)
+
+                }).catch((error) => console.log(error.response.data)
             )
         }
     }

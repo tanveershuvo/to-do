@@ -25,9 +25,9 @@ Route::group(['middleware'=>'api'], function () {
     });
     Route::post('/logout', 'AuthController@logout');
     Route::post('/refresh', 'AuthController@refresh');
-    Route::post('/add-new-todo', 'TodoController@createTodo');
+    Route::post('/add-new-todo', 'TodoController@createOrUpdateTodo');
     Route::get('/all-todos/{id}', 'TodoController@getAllTodos');
     Route::delete('/destroy/{id}', 'TodoController@destroy');
     Route::get('/get-todo/{id}', 'TodoController@getTodo');
-    Route::post('/update-todo/', 'TodoController@updateTodo');
+    Route::post('/update-todo/', 'TodoController@createOrUpdateTodo');
 });

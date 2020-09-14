@@ -14,13 +14,21 @@ class TodoController extends Controller
         return response()->json($allTodos,Response::HTTP_OK);
     }
 
-    public function createTodo(Request $request){
+    public function createOrUpdateTodo(Request $request){
         $val = $request->validate([
            'title'=>'required|max:50',
            'details'=>'max:250',
             'user_id'=>'',
         ]);
-        $created = Todo::create($val);
+
+        $created = Todo::updateOrCreate(
+            ['id'=>$request->id],
+            [
+                'title'=>$val['title'],
+                'details'=>$val['details'],
+                'user_id'=>$val['user_id'],
+
+            ]);
         return response()->json($created, Response::HTTP_OK);
     }
 
@@ -33,14 +41,14 @@ class TodoController extends Controller
         $data = Todo::where('id',$id)->first();
         return response()->json($data,Response::HTTP_OK);
     }
-    public function updateTodo(Request $request){
-        $val = $request->validate([
-            'title'=>'required|max:50',
-            'details'=>'max:250',
-            'user_id'=>'',
-            'id'=>''
-        ]);
-        $data = Todo::where('id',$val['id'])->update($val);
-        return response()->json($data,Response::HTTP_OK);
-    }
+//    public function updateTodo(Request $request){
+//        $val = $request->validate([
+//            'title'=>'required|max:50',
+//            'details'=>'max:250',
+//            'user_id'=>'',
+//            'id'=>''
+//        ]);
+//        $data = Todo::where('id',$val['id'])->update($val);
+//        return response()->json($data,Response::HTTP_OK);
+//    }
 }

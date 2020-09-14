@@ -25,6 +25,11 @@ class Todo extends Model
 
     public function getUpdatedAtAttribute()
     {
-        return  Carbon::parse($this->attributes['created_at'])->shortRelativeDiffForHumans();
+        return  Carbon::parse($this->attributes['updated_at'])->shortRelativeDiffForHumans();
+    }
+
+    public function setUpdatedAtAttribute()
+    {
+        return  $this->attributes['updated_at'] = now();
     }
 }

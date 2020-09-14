@@ -4,6 +4,25 @@
         outlined
         tile
     >
+        <v-snackbar
+            v-model="snackbar"
+            :bottom="bottom"
+            :right="right"
+            :timeout="timeout"
+            :color="color"
+        >
+            {{ text }}
+            <template v-slot:action="{ attrs }">
+                <v-btn
+                    dark
+                    text
+                    v-bind="attrs"
+                    @click="snackbar = false"
+                >
+                    Close
+                </v-btn>
+            </template>
+        </v-snackbar>
     <v-container>
         <v-row class="py-2">
             <v-col cols="6">
@@ -31,7 +50,6 @@ import User from "../Helpers/User";
 import todolist from "./Todolist"
 import addtodo from "./AddTodo"
 import edittodo from "./EditTodo";
-
 export default {
     name: "home",
     components:{todolist,addtodo, edittodo},
@@ -40,20 +58,27 @@ export default {
         todolists:{},
         editdata:{},
         editModal: false,
+        snackbar: false,
+        timeout: 3000,
+        bottom: true,
+        right: true,
+        text: null,
+        color:null,
     }),
     methods:{
         updateForm(){
             this.editModal=true;
         },
          updatedData(data){
-            this.todolists.unshift(data);
+            this.todolists.unshift(data)
+            this.snackbar = true
+
          },
-        updateAfterUpdate(id){
-            //this.todolists.find(todolist => todolist.id === id);
-        },
          delData(id){
             let index = this.todolists.findIndex(todolist => todolist.id === id)
-            this.todolists.splice(index,1);
+            this.todolists.splice(index,1)
+             this.snackbar = true
+
          }
     },
     created(){
@@ -69,22 +94,30 @@ export default {
         EventBus.$on('updateAfterAdd',(data) =>{
             //Event on AddTodo Component
                 this.updatedData(data)
+                this.text = 'Added Successfully'
+                this.color = 'success'
             }
         )
-        EventBus.$on('updateAfterUpdate',(id) =>{
-            //Event on AddTodo Component
-            this.updateAfterUpdate(id)
-        }
-    )
+        EventBus.$on('updateAfterUpdate',(data) =>{
+                //Event on AddTodo Componen
+                this.delData(data.id)
+                this.updatedData(data)
+                this.text = 'Edited Successfully'
+                this.color = 'primary'
+            }
+        )
+
         EventBus.$on('updateAfterDel',(id) =>{
             //Event on TodoList Component
                 this.delData(id)
+                this.text = 'Deleted Successfully'
+                this.color = 'red'
             }
         )
         EventBus.$on('editFormData',(data)=>{
             //console.log(data)
             EventBus.$emit('editdata', data)
-            //console.log(this.editdata)
+
             }
         )
     },

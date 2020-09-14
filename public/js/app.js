@@ -2568,7 +2568,7 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_2__["extend"])("max", _objectSpread
         _this2.modal = false;
         EventBus.$emit('updateAfterUpdate', res.data);
       })["catch"](function (error) {
-        return console.log(error.response.data.message);
+        return console.log(error.response.data);
       });
     }
   }
@@ -2617,6 +2617,25 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -2633,7 +2652,13 @@ __webpack_require__.r(__webpack_exports__);
       name: _Helpers_User__WEBPACK_IMPORTED_MODULE_0__["default"].name(),
       todolists: {},
       editdata: {},
-      editModal: false
+      editModal: false,
+      snackbar: false,
+      timeout: 3000,
+      bottom: true,
+      right: true,
+      text: null,
+      color: null
     };
   },
   methods: {
@@ -2642,14 +2667,14 @@ __webpack_require__.r(__webpack_exports__);
     },
     updatedData: function updatedData(data) {
       this.todolists.unshift(data);
-    },
-    updateAfterUpdate: function updateAfterUpdate(id) {//this.todolists.find(todolist => todolist.id === id);
+      this.snackbar = true;
     },
     delData: function delData(id) {
       var index = this.todolists.findIndex(function (todolist) {
         return todolist.id === id;
       });
       this.todolists.splice(index, 1);
+      this.snackbar = true;
     }
   },
   created: function created() {
@@ -2670,18 +2695,29 @@ __webpack_require__.r(__webpack_exports__);
     EventBus.$on('updateAfterAdd', function (data) {
       //Event on AddTodo Component
       _this.updatedData(data);
+
+      _this.text = 'Added Successfully';
+      _this.color = 'success';
     });
-    EventBus.$on('updateAfterUpdate', function (id) {
-      //Event on AddTodo Component
-      _this.updateAfterUpdate(id);
+    EventBus.$on('updateAfterUpdate', function (data) {
+      //Event on AddTodo Componen
+      _this.delData(data.id);
+
+      _this.updatedData(data);
+
+      _this.text = 'Edited Successfully';
+      _this.color = 'primary';
     });
     EventBus.$on('updateAfterDel', function (id) {
       //Event on TodoList Component
       _this.delData(id);
+
+      _this.text = 'Deleted Successfully';
+      _this.color = 'red';
     });
     EventBus.$on('editFormData', function (data) {
       //console.log(data)
-      EventBus.$emit('editdata', data); //console.log(this.editdata)
+      EventBus.$emit('editdata', data);
     });
   }
 });
@@ -7197,7 +7233,7 @@ var render = function() {
                                 _c(
                                   "v-btn",
                                   {
-                                    attrs: { color: "red lighten-2" },
+                                    attrs: { color: "red lighten-1" },
                                     on: {
                                       click: function($event) {
                                         _vm.dialog = false
@@ -7211,7 +7247,7 @@ var render = function() {
                                   "v-btn",
                                   {
                                     attrs: {
-                                      color: "blue lighten-2",
+                                      color: "green lighten-1",
                                       type: "submit"
                                     }
                                   },
@@ -8009,21 +8045,21 @@ var render = function() {
                                 _c(
                                   "v-btn",
                                   {
-                                    attrs: { color: "red lighten-2" },
+                                    attrs: { color: "red lighten-1" },
                                     on: {
                                       click: function($event) {
                                         _vm.modal = false
                                       }
                                     }
                                   },
-                                  [_vm._v("EClose")]
+                                  [_vm._v("Close")]
                                 ),
                                 _vm._v(" "),
                                 _c(
                                   "v-btn",
                                   {
                                     attrs: {
-                                      color: "blue lighten-2",
+                                      color: "green lighten-1",
                                       type: "submit"
                                     }
                                   },
@@ -8076,6 +8112,53 @@ var render = function() {
     "v-card",
     { staticClass: "ma-6", attrs: { outlined: "", tile: "" } },
     [
+      _c(
+        "v-snackbar",
+        {
+          attrs: {
+            bottom: _vm.bottom,
+            right: _vm.right,
+            timeout: _vm.timeout,
+            color: _vm.color
+          },
+          scopedSlots: _vm._u([
+            {
+              key: "action",
+              fn: function(ref) {
+                var attrs = ref.attrs
+                return [
+                  _c(
+                    "v-btn",
+                    _vm._b(
+                      {
+                        attrs: { dark: "", text: "" },
+                        on: {
+                          click: function($event) {
+                            _vm.snackbar = false
+                          }
+                        }
+                      },
+                      "v-btn",
+                      attrs,
+                      false
+                    ),
+                    [_vm._v("\n                Close\n            ")]
+                  )
+                ]
+              }
+            }
+          ]),
+          model: {
+            value: _vm.snackbar,
+            callback: function($$v) {
+              _vm.snackbar = $$v
+            },
+            expression: "snackbar"
+          }
+        },
+        [_vm._v("\n        " + _vm._s(_vm.text) + "\n        ")]
+      ),
+      _vm._v(" "),
       _c(
         "v-container",
         [
@@ -8453,7 +8536,7 @@ var render = function() {
     [
       _c(
         "v-card",
-        { attrs: { color: "grey lighten-2", fab: "" } },
+        { attrs: { color: "grey lighten-3" } },
         [
           _c(
             "v-row",
@@ -8462,19 +8545,27 @@ var render = function() {
                 "v-col",
                 { attrs: { cols: "9", md: "9" } },
                 [
-                  _c("v-card-title", { staticClass: "headline mb-2" }, [
+                  _c("v-card-text", { staticClass: "headline" }, [
                     _vm._v(_vm._s(_vm.todolist.title))
                   ]),
                   _vm._v(" "),
-                  _c("v-card-subtitle", [
-                    _vm._v(
-                      "\n                            Posted : " +
-                        _vm._s(_vm.todolist.created_at) +
-                        ", Updated : " +
+                  _c(
+                    "v-chip",
+                    {
+                      staticClass: "mx-2",
+                      attrs: { color: "primary", outlined: "" }
+                    },
+                    [
+                      _c("v-icon", [_vm._v("mdi-plus-circle-outline")]),
+                      _vm._v(" " + _vm._s(_vm.todolist.created_at) + " "),
+                      _c("v-icon", [_vm._v("mdi-pencil-circle-outline")]),
+                      _vm._v(
                         _vm._s(_vm.todolist.updated_at) +
-                        "\n                        "
-                    )
-                  ])
+                          "\n                    "
+                      )
+                    ],
+                    1
+                  )
                 ],
                 1
               ),
@@ -8530,11 +8621,11 @@ var render = function() {
             1
           ),
           _vm._v(" "),
-          _c("v-card-text", { staticClass: "text-subtitle-2" }, [
+          _c("v-card-text", { staticClass: "black--text" }, [
             _vm._v(
-              "\n                   " +
+              "\n               " +
                 _vm._s(_vm.todolist.details) +
-                "\n                "
+                "\n            "
             )
           ])
         ],

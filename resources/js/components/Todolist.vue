@@ -1,18 +1,20 @@
 <template>
     <v-col cols="6" md="6" sm="12">
             <v-card
-                color="grey lighten-2"
-                fab
+                color="grey lighten-3"
             >
                 <v-row>
                     <v-col
                         cols="9"
                         md="9"
                     >
-                        <v-card-title class="headline mb-2">{{todolist.title}}</v-card-title>
-                        <v-card-subtitle>
-                            Posted : {{todolist.created_at}}, Updated : {{todolist.updated_at}}
-                        </v-card-subtitle>
+                        <v-card-text class="headline">{{todolist.title}}</v-card-text>
+                        <v-chip class="mx-2"
+                                color="primary"
+                                outlined
+                        >
+                            <v-icon>mdi-plus-circle-outline</v-icon> {{todolist.created_at}} <v-icon>mdi-pencil-circle-outline</v-icon>{{todolist.updated_at}}
+                        </v-chip>
                     </v-col>
                     <v-col
                         cols="1"
@@ -21,7 +23,6 @@
                         <v-btn class="mx-6" fab dark small @click="edit(todolist.id)" color="cyan">
                             <v-icon dark>mdi-pencil</v-icon>
                         </v-btn>
-<!--                        <edittodo></edittodo>-->
                     </v-col>
                     <v-col
                         cols="1"
@@ -32,8 +33,7 @@
                         </v-btn>
                     </v-col>
                 </v-row>
-
-                <v-card-text class="text-subtitle-2">
+                <v-card-text class="black--text">
                    {{todolist.details}}
                 </v-card-text>
             </v-card>
