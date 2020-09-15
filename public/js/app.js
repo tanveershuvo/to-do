@@ -8059,11 +8059,11 @@ var render = function() {
                                   "v-btn",
                                   {
                                     attrs: {
-                                      color: "green lighten-1",
+                                      color: "blue lighten-1",
                                       type: "submit"
                                     }
                                   },
-                                  [_vm._v("Save")]
+                                  [_vm._v("Edit")]
                                 )
                               ],
                               1

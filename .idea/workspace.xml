@@ -21,17 +21,10 @@
   <component name="ChangeListManager">
     <list default="true" id="9d9cea49-3100-4cc1-ac29-aaa87bde53b7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AuthController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TodoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TodoController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Todo.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Todo.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/AddTodo.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/AddTodo.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/EditTodo.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/EditTodo.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/Home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Home.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/Todolist.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Todolist.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -239,11 +232,11 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="491" y="91" width="374" height="569" key="#com.intellij.ide.util.MemberChooser" timestamp="1599435607809">
-      <screen x="0" y="27" width="1366" height="689" />
+    <state x="491" y="91" width="374" height="569" key="#com.intellij.ide.util.MemberChooser" timestamp="1600172157281">
+      <screen x="0" y="27" width="1366" height="690" />
     </state>
     <state x="491" y="91" width="374" height="569" key="#com.intellij.ide.util.MemberChooser/0.27.1366.689@0.27.1366.689" timestamp="1599435607809" />
-    <state x="491" y="91" width="374" height="569" key="#com.intellij.ide.util.MemberChooser/0.27.1366.690@0.27.1366.690" timestamp="1599321776514" />
+    <state x="491" y="91" width="374" height="569" key="#com.intellij.ide.util.MemberChooser/0.27.1366.690@0.27.1366.690" timestamp="1600172157281" />
     <state x="416" y="129" width="524" height="491" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1599435501626">
       <screen x="0" y="27" width="1366" height="689" />
     </state>

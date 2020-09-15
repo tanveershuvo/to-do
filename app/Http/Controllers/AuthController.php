@@ -23,9 +23,8 @@ class AuthController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('JWT', ['except' => ['login','signup']]);
+        $this->middleware('Auth:api', ['except' => ['login','signup']]);
     }
-
 
     /**
      * @param Request $request
@@ -56,15 +55,6 @@ class AuthController extends Controller
         //dd($request->only('email', 'password'));
         return $this->login($request);
 
-    }
-    /**
-     * Get the authenticated User
-     *
-     * @return JsonResponse
-     */
-    public function me()
-    {
-        return response()->json($this->guard()->user());
     }
 
     /**

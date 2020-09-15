@@ -39,7 +39,7 @@
                         <v-card-actions>
                             <v-spacer></v-spacer>
                             <v-btn color="red lighten-1" @click="modal = false" >Close</v-btn>
-                            <v-btn color="green lighten-1" type="submit">Save</v-btn>
+                            <v-btn color="blue lighten-1" type="submit">Edit</v-btn>
                         </v-card-actions>
                     </v-form>
                 </ValidationObserver>
