@@ -18,11 +18,7 @@ use Illuminate\Support\Facades\Route;
 //    return $request->user();
 //});
 
-Route::group(['middleware'=>'api'], function () {
-    Route::group(['prefix' => 'auth'], function () {
-        Route::post('/login', 'AuthController@login');
-        Route::post('/signup', 'AuthController@signup');
-    });
+Route::group(['middleware'=>'JwtMiddleware'], function () {
     Route::post('/logout', 'AuthController@logout');
     Route::post('/refresh', 'AuthController@refresh');
     Route::post('/add-new-todo', 'TodoController@createOrUpdateTodo');
@@ -30,4 +26,8 @@ Route::group(['middleware'=>'api'], function () {
     Route::delete('/destroy/{id}', 'TodoController@destroy');
     Route::get('/get-todo/{id}', 'TodoController@getTodo');
     Route::post('/update-todo/', 'TodoController@createOrUpdateTodo');
+});
+Route::group(['prefix' => 'auth'], function () {
+    Route::post('/login', 'AuthController@login');
+    Route::post('/signup', 'AuthController@signup');
 });

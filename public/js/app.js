@@ -3025,6 +3025,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
 
 
 
@@ -8522,11 +8523,11 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "v-col",
-    { attrs: { cols: "6", md: "6", sm: "12" } },
+    { attrs: { cols: "6", md: "6", sm: "12", xs: "12" } },
     [
       _c(
         "v-card",
-        { attrs: { color: "grey lighten-3" } },
+        { attrs: { cols: "6", color: "grey lighten-3" } },
         [
           _c(
             "v-row",
@@ -8613,7 +8614,7 @@ var render = function() {
           _vm._v(" "),
           _c("v-card-text", { staticClass: "black--text" }, [
             _vm._v(
-              "\n               " +
+              "\n                " +
                 _vm._s(_vm.todolist.details) +
                 "\n            "
             )

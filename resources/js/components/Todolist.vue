@@ -1,6 +1,7 @@
 <template>
-    <v-col cols="6" md="6" sm="12">
+    <v-col cols="6" md="6" sm="12" xs="12">
             <v-card
+                cols="6"
                 color="grey lighten-3"
             >
                 <v-row>
@@ -34,7 +35,7 @@
                     </v-col>
                 </v-row>
                 <v-card-text class="black--text">
-                   {{todolist.details}}
+                    {{todolist.details}}
                 </v-card-text>
             </v-card>
         </v-col>

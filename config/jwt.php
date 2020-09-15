@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of jwt-Auth.
+ * This file is part of jwt-auth.
  *
  * (c) Sean Tymon <tymon148@gmail.com>
  *
@@ -13,7 +13,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | JWT Authentication Secret
+    | JwtMiddleware Authentication Secret
     |--------------------------------------------------------------------------
     |
     | Don't forget to set this in your .env file, as it will be used to sign
@@ -29,7 +29,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | JWT Authentication Keys
+    | JwtMiddleware Authentication Keys
     |--------------------------------------------------------------------------
     |
     | The algorithm you are using, will determine whether your tokens are
@@ -87,7 +87,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | JWT time to live
+    | JwtMiddleware time to live
     |--------------------------------------------------------------------------
     |
     | Specify the length of time (in minutes) that the token will be valid for.
@@ -124,7 +124,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | JWT hashing algorithm
+    | JwtMiddleware hashing algorithm
     |--------------------------------------------------------------------------
     |
     | Specify the hashing algorithm that will be used to sign the token.
@@ -227,7 +227,7 @@ return [
     | Blacklist Grace Period
     | -------------------------------------------------------------------------
     |
-    | When multiple concurrent requests are made with the same JWT,
+    | When multiple concurrent requests are made with the same JwtMiddleware,
     | it is possible that some of them fail, due to token regeneration
     | on every request.
     |
@@ -268,7 +268,7 @@ return [
 
         /*
         |--------------------------------------------------------------------------
-        | JWT Provider
+        | JwtMiddleware Provider
         |--------------------------------------------------------------------------
         |
         | Specify the provider that is used to create and decode the tokens.
@@ -286,7 +286,7 @@ return [
         |
         */
 
-        'Auth' => Tymon\JWTAuth\Providers\Auth\Illuminate::class,
+        'auth' => Tymon\JWTAuth\Providers\Auth\Illuminate::class,
 
         /*
         |--------------------------------------------------------------------------

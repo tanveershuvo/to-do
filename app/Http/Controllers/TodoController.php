@@ -16,7 +16,7 @@ class TodoController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('Auth:api');
+        $this->middleware('JwtMiddleware');
     }
 
     /**

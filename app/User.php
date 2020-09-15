@@ -15,7 +15,7 @@ use Notifiable;
 
     protected $hidden = ['password','remember_token'];
     /**
-    * Get the identifier that will be stored in the subject claim of the JWT.
+    * Get the identifier that will be stored in the subject claim of the JwtMiddleware.
     *
     * @return mixed
     */
@@ -25,7 +25,7 @@ use Notifiable;
     }
 
     /**
-    * Return a key value array, containing any custom claims to be added to the JWT.
+    * Return a key value array, containing any custom claims to be added to the JwtMiddleware.
     *
     * @return array
     */

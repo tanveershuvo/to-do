@@ -23,7 +23,7 @@ class AuthController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('Auth:api', ['except' => ['login','signup']]);
+        $this->middleware('JwtMiddleware', ['except' => ['login','signup']]);
     }
 
     /**
@@ -91,7 +91,7 @@ class AuthController extends Controller
         return response()->json([
             'access_token' => $token,
             'token_type' => 'bearer',
-            'expires_in' => JWTFactory::getTTL() * 60,
+            'expires_in' => JWTFactory::getTTL() * 1,
             'user_name'=>auth()->user()->name,
         ]);
     }

@@ -7,7 +7,8 @@ use Illuminate\Http\Request;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
-class JWT
+
+class JwtMiddleware
 {
     /**
      * @param $request
@@ -16,6 +17,7 @@ class JWT
      */
     public function handle($request, Closure $next)
     {
+        //$token = $request->bearerToken();
         JWTAuth::parseToken()->authenticate();
         return $next($request);
     }
