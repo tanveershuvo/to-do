@@ -2589,6 +2589,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Todolist__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Todolist */ "./resources/js/components/Todolist.vue");
 /* harmony import */ var _AddTodo__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./AddTodo */ "./resources/js/components/AddTodo.vue");
 /* harmony import */ var _EditTodo__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./EditTodo */ "./resources/js/components/EditTodo.vue");
+/* harmony import */ var _Helpers_AppStorage__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../Helpers/AppStorage */ "./resources/js/Helpers/AppStorage.js");
 //
 //
 //
@@ -2636,6 +2637,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 
 
 
@@ -2654,31 +2656,32 @@ __webpack_require__.r(__webpack_exports__);
       editdata: {},
       editModal: false,
       snackbar: false,
-      timeout: 3000,
-      bottom: true,
-      right: true,
       text: null,
       color: null
     };
   },
   methods: {
+    getData: function getData() {
+      var _this = this;
+
+      var uri = "api/v1/all-todos/";
+      axios.get(uri + _Helpers_User__WEBPACK_IMPORTED_MODULE_0__["default"].user_id()).then(function (res) {
+        return _this.todolists = res.data;
+      })["catch"](function (error) {
+        return console.log(error.response.data);
+      });
+    },
+    notifyUser: function notifyUser(text, color) {
+      this.text = text;
+      this.color = color;
+      this.snackbar = true;
+    },
     updateForm: function updateForm() {
       this.editModal = true;
-    },
-    updatedData: function updatedData(data) {
-      this.todolists.unshift(data);
-      this.snackbar = true;
-    },
-    delData: function delData(id) {
-      var index = this.todolists.findIndex(function (todolist) {
-        return todolist.id === id;
-      });
-      this.todolists.splice(index, 1);
-      this.snackbar = true;
     }
   },
   created: function created() {
-    var _this = this;
+    var _this2 = this;
 
     if (!_Helpers_User__WEBPACK_IMPORTED_MODULE_0__["default"].loggedIn()) {
       this.$router.push({
@@ -2686,39 +2689,31 @@ __webpack_require__.r(__webpack_exports__);
       });
     }
 
-    var uri = "api/v1/all-todos/";
-    axios.get(uri + _Helpers_User__WEBPACK_IMPORTED_MODULE_0__["default"].user_id()).then(function (res) {
-      return _this.todolists = res.data;
-    })["catch"](function (error) {
-      return console.log(error.response.data);
-    });
     EventBus.$on('updateAfterAdd', function (data) {
       //Event on AddTodo Component
-      _this.updatedData(data);
+      _this2.getData();
 
-      _this.text = 'Added Successfully';
-      _this.color = 'success';
+      _this2.notifyUser('Added Successfully', 'success');
     });
     EventBus.$on('updateAfterUpdate', function (data) {
-      //Event on AddTodo Componen
-      _this.delData(data.id);
+      //Event on AddTodo Component
+      _this2.getData();
 
-      _this.updatedData(data);
-
-      _this.text = 'Edited Successfully';
-      _this.color = 'primary';
+      _this2.notifyUser('Edited Successfully', 'primary');
     });
     EventBus.$on('updateAfterDel', function (id) {
       //Event on TodoList Component
-      _this.delData(id);
+      _this2.getData();
 
-      _this.text = 'Deleted Successfully';
-      _this.color = 'red';
+      _this2.notifyUser('Deleted Successfully', 'red');
     });
     EventBus.$on('editFormData', function (data) {
       //console.log(data)
       EventBus.$emit('editdata', data);
     });
+  },
+  mounted: function mounted() {
+    this.getData();
   }
 });
 
@@ -8115,12 +8110,7 @@ var render = function() {
       _c(
         "v-snackbar",
         {
-          attrs: {
-            bottom: _vm.bottom,
-            right: _vm.right,
-            timeout: _vm.timeout,
-            color: _vm.color
-          },
+          attrs: { bottom: true, right: true, timeout: 3000, color: _vm.color },
           scopedSlots: _vm._u([
             {
               key: "action",
@@ -67826,35 +67816,42 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var vuetify__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuetify */ "./node_modules/vuetify/dist/vuetify.js");
-/* harmony import */ var vuetify__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vuetify__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var vue_axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-axios */ "./node_modules/vue-axios/dist/vue-axios.min.js");
-/* harmony import */ var vue_axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(vue_axios__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _Helpers_User__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Helpers/User */ "./resources/js/Helpers/User.js");
-/* harmony import */ var _Router_Router_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Router/Router.js */ "./resources/js/Router/Router.js");
+/* harmony import */ var _Helpers_AppStorage__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Helpers/AppStorage */ "./resources/js/Helpers/AppStorage.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var vuetify__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuetify */ "./node_modules/vuetify/dist/vuetify.js");
+/* harmony import */ var vuetify__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(vuetify__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var vue_axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue-axios */ "./node_modules/vue-axios/dist/vue-axios.min.js");
+/* harmony import */ var vue_axios__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(vue_axios__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _Helpers_User__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Helpers/User */ "./resources/js/Helpers/User.js");
+/* harmony import */ var _Router_Router_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Router/Router.js */ "./resources/js/Router/Router.js");
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
 // require('./boostrap');
+
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 
 
 
 
-window.axios = axios__WEBPACK_IMPORTED_MODULE_3___default.a;
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuetify__WEBPACK_IMPORTED_MODULE_1___default.a, vue_axios__WEBPACK_IMPORTED_MODULE_2___default.a, axios__WEBPACK_IMPORTED_MODULE_3___default.a);
+window.axios = axios__WEBPACK_IMPORTED_MODULE_4___default.a;
+vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vuetify__WEBPACK_IMPORTED_MODULE_2___default.a, vue_axios__WEBPACK_IMPORTED_MODULE_3___default.a, axios__WEBPACK_IMPORTED_MODULE_4___default.a);
 
-window.User = _Helpers_User__WEBPACK_IMPORTED_MODULE_4__["default"];
-window.EventBus = new vue__WEBPACK_IMPORTED_MODULE_0___default.a();
-var vuetify = new vuetify__WEBPACK_IMPORTED_MODULE_1___default.a();
+
+window.User = _Helpers_User__WEBPACK_IMPORTED_MODULE_5__["default"];
+axios__WEBPACK_IMPORTED_MODULE_4___default.a.defaults.headers.common = {
+  'Content-Type': 'application/json',
+  'Authorization': 'Bearer' + _Helpers_AppStorage__WEBPACK_IMPORTED_MODULE_0__["default"].getToken()
+};
+window.EventBus = new vue__WEBPACK_IMPORTED_MODULE_1___default.a();
+var vuetify = new vuetify__WEBPACK_IMPORTED_MODULE_2___default.a();
 var opts = {};
-/* harmony default export */ __webpack_exports__["default"] = (new vuetify__WEBPACK_IMPORTED_MODULE_1___default.a(opts));
+/* harmony default export */ __webpack_exports__["default"] = (new vuetify__WEBPACK_IMPORTED_MODULE_2___default.a(opts));
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -67865,7 +67862,7 @@ var opts = {};
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('AppHome', __webpack_require__(/*! ./components/Partials/AppHome.vue */ "./resources/js/components/Partials/AppHome.vue")["default"]);
+vue__WEBPACK_IMPORTED_MODULE_1___default.a.component('AppHome', __webpack_require__(/*! ./components/Partials/AppHome.vue */ "./resources/js/components/Partials/AppHome.vue")["default"]);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -67873,10 +67870,10 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('AppHome', __webpack_requir
  */
 
 
-var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
+var app = new vue__WEBPACK_IMPORTED_MODULE_1___default.a({
   el: '#app',
   vuetify: vuetify,
-  router: _Router_Router_js__WEBPACK_IMPORTED_MODULE_5__["default"]
+  router: _Router_Router_js__WEBPACK_IMPORTED_MODULE_6__["default"]
 });
 
 /***/ }),

@@ -6,9 +6,9 @@
     >
         <v-snackbar
             v-model="snackbar"
-            :bottom="bottom"
-            :right="right"
-            :timeout="timeout"
+            :bottom="true"
+            :right="true"
+            :timeout="3000"
             :color="color"
         >
             {{ text }}
@@ -50,6 +50,7 @@ import User from "../Helpers/User";
 import todolist from "./Todolist"
 import addtodo from "./AddTodo"
 import edittodo from "./EditTodo";
+import AppStorage from "../Helpers/AppStorage";
 export default {
     name: "home",
     components:{todolist,addtodo, edittodo},
@@ -59,59 +60,48 @@ export default {
         editdata:{},
         editModal: false,
         snackbar: false,
-        timeout: 3000,
-        bottom: true,
-        right: true,
         text: null,
         color:null,
     }),
     methods:{
+        getData(){
+            let uri = "api/v1/all-todos/";
+            axios
+                .get(uri + User.user_id())
+                .then((res) => this.todolists = res.data)
+                .catch((error) => console.log(error.response.data))
+        },
+        notifyUser(text,color){
+            this.text = text
+            this.color = color
+            this.snackbar = true
+        },
         updateForm(){
             this.editModal=true;
         },
-         updatedData(data){
-            this.todolists.unshift(data)
-            this.snackbar = true
-
-         },
-         delData(id){
-            let index = this.todolists.findIndex(todolist => todolist.id === id)
-            this.todolists.splice(index,1)
-             this.snackbar = true
-
-         }
     },
     created(){
         if (!User.loggedIn()) {
             this.$router.push({name: 'auth'});
         }
-        let uri = "api/v1/all-todos/";
-        axios
-            .get(uri + User.user_id())
-            .then((res) => this.todolists = res.data)
-            .catch((error) => console.log(error.response.data))
 
         EventBus.$on('updateAfterAdd',(data) =>{
             //Event on AddTodo Component
-                this.updatedData(data)
-                this.text = 'Added Successfully'
-                this.color = 'success'
+                this.getData()
+                this.notifyUser('Added Successfully','success')
             }
         )
         EventBus.$on('updateAfterUpdate',(data) =>{
-                //Event on AddTodo Componen
-                this.delData(data.id)
-                this.updatedData(data)
-                this.text = 'Edited Successfully'
-                this.color = 'primary'
+                //Event on AddTodo Component
+                this.getData()
+                this.notifyUser('Edited Successfully','primary')
             }
         )
 
         EventBus.$on('updateAfterDel',(id) =>{
             //Event on TodoList Component
-                this.delData(id)
-                this.text = 'Deleted Successfully'
-                this.color = 'red'
+                this.getData()
+                this.notifyUser('Deleted Successfully','red')
             }
         )
         EventBus.$on('editFormData',(data)=>{
@@ -121,7 +111,9 @@ export default {
             }
         )
     },
-
+    mounted(){
+        this.getData()
+    }
 }
 </script>
 

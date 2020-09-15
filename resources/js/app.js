@@ -5,6 +5,8 @@
  */
 
 // require('./boostrap');
+import AppStorage from "./Helpers/AppStorage";
+
 window.Vue = require('vue');
 import Vue from 'vue'
 import Vuetify from 'vuetify'
@@ -15,8 +17,16 @@ window.axios = axios
 
 Vue.use(Vuetify,VueAxios, axios);
 
+
+
 import User from './Helpers/User'
+import Appstorage from './Helpers/AppStorage'
 window.User = User
+
+axios.defaults.headers.common = {
+    'Content-Type': 'application/json',
+    'Authorization': 'Bearer'+AppStorage.getToken(),
+};
 window.EventBus = new Vue();
 
 const vuetify = new Vuetify();
