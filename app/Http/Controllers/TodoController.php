@@ -32,16 +32,13 @@ class TodoController extends Controller
      * @param Request $request
      * @return JsonResponse
      */
-    public function createOrUpdateTodo(Request $request){
+    public function createTodo(Request $request){
         $val = $request->validate([
            'title'=>'required|max:50',
            'details'=>'max:250',
             'user_id'=>'',
         ]);
-
-        $created = Todo::updateOrCreate(
-            ['id'=>$request->id],
-            [
+        $created = Todo::Create([
                 'title'=>$val['title'],
                 'details'=>$val['details'],
                 'user_id'=>$val['user_id'],
@@ -65,6 +62,21 @@ class TodoController extends Controller
     public function getTodo($id){
         $data = Todo::where('id',$id)->first();
         return response()->json($data,Response::HTTP_OK);
+    }
+
+    public function updateTodo(Request $request){
+        $val = $request->validate([
+            'title'=>'required|max:50',
+            'details'=>'max:250',
+            'user_id'=>'',
+            'id'=>'',
+        ]);
+        $created = Todo::where('id',$val['id'])->update([
+            'title'=>$val['title'],
+            'details'=>$val['details'],
+            'user_id'=>$val['user_id'],
+        ]);
+        return response()->json($created, Response::HTTP_OK);
     }
 
 }

@@ -21,11 +21,11 @@ use Illuminate\Support\Facades\Route;
 Route::group(['middleware'=>'JwtMiddleware'], function () {
     Route::post('/logout', 'AuthController@logout');
     Route::post('/refresh', 'AuthController@refresh');
-    Route::post('/add-new-todo', 'TodoController@createOrUpdateTodo');
+    Route::post('/add-new-todo', 'TodoController@createTodo');
     Route::get('/all-todos/{id}', 'TodoController@getAllTodos');
     Route::delete('/destroy/{id}', 'TodoController@destroy');
     Route::get('/get-todo/{id}', 'TodoController@getTodo');
-    Route::post('/update-todo/', 'TodoController@createOrUpdateTodo');
+    Route::post('/update-todo/', 'TodoController@updateTodo');
 });
 Route::group(['prefix' => 'auth'], function () {
     Route::post('/login', 'AuthController@login');

@@ -17,7 +17,6 @@ class JwtMiddleware
      */
     public function handle($request, Closure $next)
     {
-        //$token = $request->bearerToken();
         JWTAuth::parseToken()->authenticate();
         return $next($request);
     }

@@ -5,8 +5,10 @@
         height="50px"
         tile
     >
-        <v-toolbar color="grey lighten-3" dense>
-            <v-toolbar-title class="mx-10">
+        <v-app-bar color="grey lighten-3"
+                   fixed>
+            <v-app-bar-nav-icon></v-app-bar-nav-icon>
+            <v-toolbar-title>
                     Simple to-do
             </v-toolbar-title>
 
@@ -25,7 +27,7 @@
                     </v-btn>
                 </router-link>
             </div>
-        </v-toolbar>
+        </v-app-bar>
     </v-card>
 </template>
 

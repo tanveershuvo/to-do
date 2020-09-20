@@ -2140,6 +2140,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 
 
@@ -2518,7 +2519,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
 
 
 
@@ -2590,11 +2590,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _AddTodo__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./AddTodo */ "./resources/js/components/AddTodo.vue");
 /* harmony import */ var _EditTodo__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./EditTodo */ "./resources/js/components/EditTodo.vue");
 /* harmony import */ var _Helpers_AppStorage__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../Helpers/AppStorage */ "./resources/js/Helpers/AppStorage.js");
-//
-//
-//
-//
-//
 //
 //
 //
@@ -2759,6 +2754,8 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Helpers_User__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../Helpers/User */ "./resources/js/Helpers/User.js");
 /* harmony import */ var _Home__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Home */ "./resources/js/components/Home.vue");
+//
+//
 //
 //
 //
@@ -2982,6 +2979,10 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+//
+//
+//
+//
 //
 //
 //
@@ -7294,10 +7295,11 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "v-container",
+    { staticClass: "grey lighten-5 text-center", attrs: { fluid: "" } },
     [
       _c(
         "v-card",
-        { staticClass: "ma-8 pa-3", attrs: { outlined: "", tile: "" } },
+        { staticClass: "mt-10 text-center", attrs: { "max-width": "700" } },
         [
           _c("ValidationObserver", {
             ref: "observer",
@@ -7319,17 +7321,14 @@ var render = function() {
                         }
                       },
                       [
-                        _c("h1", { staticClass: "text-center" }, [
-                          _vm._v("Login Form")
-                        ]),
+                        _c("h1", [_vm._v("Login Form")]),
                         _vm._v(" "),
                         _c(
                           "v-row",
-                          { staticClass: "justify-center" },
                           [
                             _c(
                               "v-col",
-                              { attrs: { cols: "12", sm: "6", md: "8" } },
+                              { attrs: { cols: "12", sm: "6", md: "10" } },
                               [
                                 _vm.errorMessage
                                   ? _c(
@@ -7355,7 +7354,7 @@ var render = function() {
                             _vm._v(" "),
                             _c(
                               "v-col",
-                              { attrs: { cols: "12", sm: "6", md: "8" } },
+                              { attrs: { cols: "12", sm: "6", md: "10" } },
                               [
                                 _c("ValidationProvider", {
                                   attrs: {
@@ -7408,7 +7407,7 @@ var render = function() {
                             _vm._v(" "),
                             _c(
                               "v-col",
-                              { attrs: { cols: "12", sm: "6", md: "8" } },
+                              { attrs: { cols: "12", sm: "6", md: "10" } },
                               [
                                 _c("ValidationProvider", {
                                   attrs: {
@@ -7474,7 +7473,7 @@ var render = function() {
                             _vm._v(" "),
                             _c(
                               "v-col",
-                              { attrs: { cols: "12", sm: "6", md: "8" } },
+                              { attrs: { cols: "12", sm: "6", md: "10" } },
                               [
                                 _c(
                                   "v-btn",
@@ -8105,8 +8104,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "v-card",
-    { staticClass: "ma-6", attrs: { outlined: "", tile: "" } },
+    "v-container",
     [
       _c(
         "v-snackbar",
@@ -8151,39 +8149,34 @@ var render = function() {
       ),
       _vm._v(" "),
       _c(
-        "v-container",
+        "v-row",
+        { staticClass: "pt-2" },
         [
-          _c(
-            "v-row",
-            { staticClass: "py-2" },
-            [
-              _c("v-col", { attrs: { cols: "6" } }, [
-                _c("h3", { staticClass: "indigo--text float-left" }, [
-                  _vm._v("Welcome " + _vm._s(_vm.name) + "! ")
-                ])
-              ]),
-              _vm._v(" "),
-              _c(
-                "v-col",
-                { attrs: { cols: "6" } },
-                [_c("addtodo", { staticClass: "float-right" })],
-                1
-              )
-            ],
-            1
-          ),
+          _c("v-col", { attrs: { cols: "6" } }, [
+            _c("h3", { staticClass: "indigo--text float-left" }, [
+              _vm._v("Welcome " + _vm._s(_vm.name) + "! ")
+            ])
+          ]),
           _vm._v(" "),
           _c(
-            "v-row",
-            _vm._l(_vm.todolists, function(todolist) {
-              return _c("todolist", {
-                key: todolist.id,
-                attrs: { todolist: todolist }
-              })
-            }),
+            "v-col",
+            { attrs: { cols: "6" } },
+            [_c("addtodo", { staticClass: "float-right" })],
             1
           )
         ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "v-row",
+        { staticClass: "mb-12" },
+        _vm._l(_vm.todolists, function(todolist) {
+          return _c("todolist", {
+            key: todolist.id,
+            attrs: { todolist: todolist }
+          })
+        }),
         1
       ),
       _vm._v(" "),
@@ -8215,23 +8208,16 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "v-card",
-    { attrs: { height: "50" } },
+    "v-footer",
+    {
+      staticClass: "grey darken-3 white--text text-center",
+      attrs: { tile: "", fixed: "", height: "50" }
+    },
     [
-      _c(
-        "v-footer",
-        {
-          staticClass: "font-weight-medium",
-          attrs: { color: "grey lighten-2", absolute: "" }
-        },
-        [
-          _c("v-col", { staticClass: "text-center", attrs: { cols: "12" } }, [
-            _vm._v("\n            " + _vm._s(new Date().getFullYear()) + " — "),
-            _c("strong", [_vm._v("Developed by - Tanvir Rahman")])
-          ])
-        ],
-        1
-      )
+      _c("v-col", { attrs: { flat: "", tile: "" } }, [
+        _vm._v("\n        " + _vm._s(new Date().getFullYear()) + " — "),
+        _c("strong", [_vm._v("Developed by - Tanvir Rahman")])
+      ])
     ],
     1
   )
@@ -8297,10 +8283,12 @@ var render = function() {
     { attrs: { color: "blue lighten-4", flat: "", height: "50px", tile: "" } },
     [
       _c(
-        "v-toolbar",
-        { attrs: { color: "grey lighten-3", dense: "" } },
+        "v-app-bar",
+        { attrs: { color: "grey lighten-3", fixed: "" } },
         [
-          _c("v-toolbar-title", { staticClass: "mx-10" }, [
+          _c("v-app-bar-nav-icon"),
+          _vm._v(" "),
+          _c("v-toolbar-title", [
             _vm._v("\n                Simple to-do\n        ")
           ]),
           _vm._v(" "),
@@ -8523,7 +8511,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "v-col",
-    { attrs: { cols: "6", md: "6", sm: "12", xs: "12" } },
+    { attrs: { cols: "6", md: "6", sm: "12" } },
     [
       _c(
         "v-card",
@@ -8532,34 +8520,15 @@ var render = function() {
           _c(
             "v-row",
             [
-              _c(
-                "v-col",
-                { attrs: { cols: "9", md: "9" } },
-                [
-                  _c("v-card-text", { staticClass: "headline" }, [
-                    _vm._v(_vm._s(_vm.todolist.title))
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "v-chip",
-                    {
-                      staticClass: "mx-2",
-                      attrs: { color: "primary", outlined: "" }
-                    },
-                    [
-                      _c("v-icon", [_vm._v("mdi-plus-circle-outline")]),
-                      _vm._v(" " + _vm._s(_vm.todolist.created_at) + " "),
-                      _c("v-icon", [_vm._v("mdi-pencil-circle-outline")]),
-                      _vm._v(
-                        _vm._s(_vm.todolist.updated_at) +
-                          "\n                    "
-                      )
-                    ],
-                    1
+              _c("v-col", { attrs: { cols: "9", md: "9" } }, [
+                _c("h2", { staticClass: "mx-3" }, [
+                  _vm._v(
+                    "\n                        " +
+                      _vm._s(_vm.todolist.title) +
+                      "\n                    "
                   )
-                ],
-                1
-              ),
+                ])
+              ]),
               _vm._v(" "),
               _c(
                 "v-col",
@@ -8608,6 +8577,18 @@ var render = function() {
                 ],
                 1
               )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "v-chip",
+            { staticClass: "mx-2", attrs: { color: "primary", outlined: "" } },
+            [
+              _c("v-icon", [_vm._v("mdi-plus-circle-outline")]),
+              _vm._v(" " + _vm._s(_vm.todolist.created_at) + " "),
+              _c("v-icon", [_vm._v("mdi-pencil-circle-outline")]),
+              _vm._v(_vm._s(_vm.todolist.updated_at) + "\n            ")
             ],
             1
           ),

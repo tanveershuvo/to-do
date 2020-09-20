@@ -1,18 +1,19 @@
 <template>
-  <v-container>
-    <v-card class="ma-8 pa-3" outlined tile>
+  <v-container class="grey lighten-5 text-center" fluid>
+    <v-card class="mt-10 text-center"
+            max-width="700">
         <ValidationObserver ref="observer" v-slot="{ validate, handleSubmit }">
           <v-form @submit.prevent="handleSubmit(Submit)">
-          <h1 class="text-center">Login Form</h1>
-          <v-row class="justify-center">
-          <v-col cols="12" sm="6" md="8">
+          <h1 >Login Form</h1>
+          <v-row>
+          <v-col cols="12" sm="6" md="10">
               <div v-if="errorMessage" >
                   <v-alert type="error">
                       {{ errorMessage }}
                   </v-alert>
               </div>
           </v-col>
-            <v-col cols="12" sm="6" md="8">
+            <v-col cols="12" sm="6" md="10">
                 <ValidationProvider v-slot="{ errors }" name="email" rules="required|email">
                 <v-text-field
                   v-model="form.email"
@@ -24,7 +25,7 @@
                 <span class="red--text" >{{ errors[0] }}</span>
                 </ValidationProvider>
             </v-col>
-            <v-col cols="12" sm="6" md="8">
+            <v-col cols="12" sm="6" md="10">
                 <ValidationProvider v-slot="{ errors }" name="password" rules="required|min:6">
                 <v-text-field
                   v-model="form.password"
@@ -39,7 +40,7 @@
                 <span class="red--text">{{ errors[0] }}</span>
                 </ValidationProvider>
             </v-col>
-            <v-col cols="12" sm="6" md="8">
+            <v-col cols="12" sm="6" md="10">
               <v-btn color="success" type="submit" class="pa-5" outlined>Log in</v-btn>
             </v-col>
           </v-row>

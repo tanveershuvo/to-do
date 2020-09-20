@@ -1,16 +1,15 @@
 <template>
-    <v-card height="50">
         <v-footer
-            color="grey lighten-2"
-            absolute
-            class="font-weight-medium"
+            tile
+            fixed
+            height="50"
+            class="grey darken-3 white--text text-center"
         >
             <v-col
-                class="text-center"
-                cols="12"
+                flat
+                tile
             >
                 {{ new Date().getFullYear() }} — <strong>Developed by - Tanvir Rahman</strong>
             </v-col>
         </v-footer>
-    </v-card>
 </template>

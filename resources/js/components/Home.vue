@@ -1,8 +1,5 @@
 <template>
-    <v-card
-        class="ma-6"
-        outlined
-        tile
+    <v-container
     >
         <v-snackbar
             v-model="snackbar"
@@ -23,8 +20,7 @@
                 </v-btn>
             </template>
         </v-snackbar>
-    <v-container>
-        <v-row class="py-2">
+        <v-row class="pt-2">
             <v-col cols="6">
                 <h3 class="indigo--text float-left">Welcome {{name}}! </h3>
             </v-col>
@@ -32,16 +28,15 @@
                 <addtodo class="float-right"></addtodo>
             </v-col>
         </v-row>
-        <v-row>
+        <v-row class="mb-12">
         <todolist
             v-for="todolist of todolists"
             :key="todolist.id"
             :todolist=todolist
         ></todolist>
         </v-row>
-        </v-container>
         <edittodo></edittodo>
-    </v-card>
+    </v-container>
 
 </template>
 

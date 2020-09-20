@@ -1,6 +1,5 @@
 <template>
     <v-row >
-
         <v-dialog v-model="modal"  max-width="600px">
             <v-card>
                 <ValidationObserver ref="observer" v-slot="{ validate, handleSubmit }">
