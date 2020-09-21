@@ -21,9 +21,14 @@
   <component name="ChangeListManager">
     <list default="true" id="9d9cea49-3100-4cc1-ac29-aaa87bde53b7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_09_07_223035_create_todos_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_09_07_223035_create_todos_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/TodoSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/TodoSeeder.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/Partials/AppFooter.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Partials/AppFooter.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/AddTodo.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/AddTodo.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/Home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Home.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/Partials/Toolbar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Partials/Toolbar.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/TodoForm.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/Todolist.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Todolist.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -300,5 +305,17 @@
     </state>
     <state x="345" y="38" width="674" height="678" key="search.everywhere.popup/0.27.1366.689@0.27.1366.689" timestamp="1599857295130" />
     <state x="345" y="38" width="674" height="678" key="search.everywhere.popup/0.27.1366.690@0.27.1366.690" timestamp="1599487191335" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/resources/js/components/Todolist.vue</url>
+          <line>2</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

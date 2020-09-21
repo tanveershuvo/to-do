@@ -24,6 +24,7 @@ class TodoSeeder extends Seeder
             'user_id' => '1',
             'title' => 'test-2',
             'details' => 'Have to send a mail towards foodqo company before tomorrow',
+            'done'=>1,
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
         ]);

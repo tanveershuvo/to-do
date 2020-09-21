@@ -1,42 +1,40 @@
 <template>
-    <v-container
-    >
-        <v-snackbar
-            v-model="snackbar"
-            :bottom="true"
-            :right="true"
-            :timeout="3000"
-            :color="color"
-        >
-            {{ text }}
-            <template v-slot:action="{ attrs }">
-                <v-btn
-                    dark
-                    text
-                    v-bind="attrs"
-                    @click="snackbar = false"
-                >
-                    Close
-                </v-btn>
-            </template>
-        </v-snackbar>
-        <v-row class="pt-2">
-            <v-col cols="6">
-                <h3 class="indigo--text float-left">Welcome {{name}}! </h3>
-            </v-col>
-            <v-col cols="6">
-                <addtodo class="float-right"></addtodo>
-            </v-col>
-        </v-row>
-        <v-row class="mb-12">
-        <todolist
-            v-for="todolist of todolists"
-            :key="todolist.id"
-            :todolist=todolist
-        ></todolist>
-        </v-row>
-        <edittodo></edittodo>
-    </v-container>
+        <v-container grid-list-md mb-12>
+            <v-snackbar
+                v-model="snackbar"
+                :bottom="true"
+                :right="true"
+                :timeout="3000"
+                :color="color"
+            >
+                {{ text }}
+                <template v-slot:action="{ attrs }">
+                    <v-btn
+                        dark
+                        text
+                        v-bind="attrs"
+                        @click="snackbar = false"
+                    >
+                        Close
+                    </v-btn>
+                </template>
+            </v-snackbar>
+            <v-layout justify-end mb-3>
+                <v-flex shrink>
+                    <addtodo class="pa-2"></addtodo>
+                </v-flex>
+            </v-layout>
+            <v-layout row>
+                <todolist
+                    v-for="todolist of todolists"
+                    :key="todolist.id"
+                    :todolist=todolist
+                ></todolist>
+            </v-layout>
+            <edittodo></edittodo>
+        </v-container>
+
+
 
 </template>
 
@@ -50,7 +48,6 @@ export default {
     name: "home",
     components:{todolist,addtodo, edittodo},
     data: () => ({
-        name: User.name(),
         todolists:{},
         editdata:{},
         editModal: false,

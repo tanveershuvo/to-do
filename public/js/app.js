@@ -1922,10 +1922,9 @@ module.exports = {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _TodoForm__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./TodoForm */ "./resources/js/components/TodoForm.vue");
-/* harmony import */ var vee_validate__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vee-validate */ "./node_modules/vee-validate/dist/vee-validate.esm.js");
-/* harmony import */ var vee_validate_dist_rules__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vee-validate/dist/rules */ "./node_modules/vee-validate/dist/rules.js");
-/* harmony import */ var _Helpers_User__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../Helpers/User */ "./resources/js/Helpers/User.js");
+/* harmony import */ var vee_validate__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vee-validate */ "./node_modules/vee-validate/dist/vee-validate.esm.js");
+/* harmony import */ var vee_validate_dist_rules__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vee-validate/dist/rules */ "./node_modules/vee-validate/dist/rules.js");
+/* harmony import */ var _Helpers_User__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Helpers/User */ "./resources/js/Helpers/User.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -1993,19 +1992,17 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
-
-Object(vee_validate__WEBPACK_IMPORTED_MODULE_2__["setInteractionMode"])("eager");
-Object(vee_validate__WEBPACK_IMPORTED_MODULE_2__["extend"])("required", _objectSpread(_objectSpread({}, vee_validate_dist_rules__WEBPACK_IMPORTED_MODULE_3__["required"]), {}, {
+Object(vee_validate__WEBPACK_IMPORTED_MODULE_1__["setInteractionMode"])("eager");
+Object(vee_validate__WEBPACK_IMPORTED_MODULE_1__["extend"])("required", _objectSpread(_objectSpread({}, vee_validate_dist_rules__WEBPACK_IMPORTED_MODULE_2__["required"]), {}, {
   message: "{_field_} can not be empty"
 }));
-Object(vee_validate__WEBPACK_IMPORTED_MODULE_2__["extend"])("max", _objectSpread(_objectSpread({}, vee_validate_dist_rules__WEBPACK_IMPORTED_MODULE_3__["max"]), {}, {
+Object(vee_validate__WEBPACK_IMPORTED_MODULE_1__["extend"])("max", _objectSpread(_objectSpread({}, vee_validate_dist_rules__WEBPACK_IMPORTED_MODULE_2__["max"]), {}, {
   message: "{_field_} must not be more than {length} characters"
 }));
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
-    todoform: _TodoForm__WEBPACK_IMPORTED_MODULE_1__["default"],
-    ValidationProvider: vee_validate__WEBPACK_IMPORTED_MODULE_2__["ValidationProvider"],
-    ValidationObserver: vee_validate__WEBPACK_IMPORTED_MODULE_2__["ValidationObserver"]
+    ValidationProvider: vee_validate__WEBPACK_IMPORTED_MODULE_1__["ValidationProvider"],
+    ValidationObserver: vee_validate__WEBPACK_IMPORTED_MODULE_1__["ValidationObserver"]
   },
   name: "AddTodo",
   data: function data() {
@@ -2014,7 +2011,7 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_2__["extend"])("max", _objectSpread
       form: {
         title: null,
         details: null,
-        user_id: _Helpers_User__WEBPACK_IMPORTED_MODULE_4__["default"].user_id()
+        user_id: _Helpers_User__WEBPACK_IMPORTED_MODULE_3__["default"].user_id()
       }
     };
   },
@@ -2635,8 +2632,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 
 
 
@@ -2651,7 +2646,6 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      name: _Helpers_User__WEBPACK_IMPORTED_MODULE_0__["default"].name(),
       todolists: {},
       editdata: {},
       editModal: false,
@@ -2858,144 +2852,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/TodoForm.vue?vue&type=script&lang=js&":
-/*!*******************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/TodoForm.vue?vue&type=script&lang=js& ***!
-  \*******************************************************************************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var vee_validate_dist_rules__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vee-validate/dist/rules */ "./node_modules/vee-validate/dist/rules.js");
-/* harmony import */ var vee_validate__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vee-validate */ "./node_modules/vee-validate/dist/vee-validate.esm.js");
-/* harmony import */ var _Helpers_User__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Helpers/User */ "./resources/js/Helpers/User.js");
-
-
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-
-Object(vee_validate__WEBPACK_IMPORTED_MODULE_2__["setInteractionMode"])("eager");
-Object(vee_validate__WEBPACK_IMPORTED_MODULE_2__["extend"])("required", _objectSpread(_objectSpread({}, vee_validate_dist_rules__WEBPACK_IMPORTED_MODULE_1__["required"]), {}, {
-  message: "{_field_} can not be empty"
-}));
-Object(vee_validate__WEBPACK_IMPORTED_MODULE_2__["extend"])("max", _objectSpread(_objectSpread({}, vee_validate_dist_rules__WEBPACK_IMPORTED_MODULE_1__["max"]), {}, {
-  message: "{_field_} must not be more than {length} characters"
-}));
-/* harmony default export */ __webpack_exports__["default"] = ({
-  components: {
-    ValidationProvider: vee_validate__WEBPACK_IMPORTED_MODULE_2__["ValidationProvider"],
-    ValidationObserver: vee_validate__WEBPACK_IMPORTED_MODULE_2__["ValidationObserver"]
-  },
-  data: function data() {
-    return {
-      modal: false,
-      form: {
-        title: null,
-        details: null,
-        user_id: _Helpers_User__WEBPACK_IMPORTED_MODULE_3__["default"].user_id()
-      }
-    };
-  },
-  props: ['todolist'],
-  created: function created() {
-    // console.log(this.todolist)
-    if (this.todolist != null) {
-      this.form.title = this.todolist.title;
-      this.form.details = this.todolist.details;
-      this.modal = true; // console.log(this.todolist.title)
-    }
-  },
-  methods: {
-    Submit: function Submit() {
-      var _this = this;
-
-      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                EventBus.$emit('addNewTodo', _this.form);
-
-              case 1:
-              case "end":
-                return _context.stop();
-            }
-          }
-        }, _callee);
-      }))();
-    },
-    addCloseModal: function addCloseModal() {
-      this.resetForm();
-      EventBus.$emit('addCloseModal');
-    },
-    editCloseModal: function editCloseModal() {
-      this.resetForm();
-      EventBus.$emit('editCloseModal');
-    },
-    resetForm: function resetForm() {
-      this.form.title = '';
-      this.form.details = '';
-      this.modal = false;
-    }
-  }
-});
-
-/***/ }),
-
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Todolist.vue?vue&type=script&lang=js&":
 /*!*******************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Todolist.vue?vue&type=script&lang=js& ***!
@@ -3008,8 +2864,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _AddTodo__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AddTodo */ "./resources/js/components/AddTodo.vue");
-/* harmony import */ var _TodoForm__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./TodoForm */ "./resources/js/components/TodoForm.vue");
-/* harmony import */ var _Helpers_User__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Helpers/User */ "./resources/js/Helpers/User.js");
+/* harmony import */ var _Helpers_User__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Helpers/User */ "./resources/js/Helpers/User.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -3064,13 +2919,77 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
-    addtodo: _AddTodo__WEBPACK_IMPORTED_MODULE_1__["default"],
-    todoform: _TodoForm__WEBPACK_IMPORTED_MODULE_2__["default"]
+    addtodo: _AddTodo__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   name: "Todolist",
   data: function data() {
@@ -8142,6 +8061,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "v-container",
+    { attrs: { "grid-list-md": "", "mb-12": "" } },
     [
       _c(
         "v-snackbar",
@@ -8186,19 +8106,13 @@ var render = function() {
       ),
       _vm._v(" "),
       _c(
-        "v-row",
-        { staticClass: "pt-2" },
+        "v-layout",
+        { attrs: { "justify-end": "", "mb-3": "" } },
         [
-          _c("v-col", { attrs: { cols: "6" } }, [
-            _c("h3", { staticClass: "indigo--text float-left" }, [
-              _vm._v("Welcome " + _vm._s(_vm.name) + "! ")
-            ])
-          ]),
-          _vm._v(" "),
           _c(
-            "v-col",
-            { attrs: { cols: "6" } },
-            [_c("addtodo", { staticClass: "float-right" })],
+            "v-flex",
+            { attrs: { shrink: "" } },
+            [_c("addtodo", { staticClass: "pa-2" })],
             1
           )
         ],
@@ -8206,8 +8120,8 @@ var render = function() {
       ),
       _vm._v(" "),
       _c(
-        "v-row",
-        { staticClass: "mb-12" },
+        "v-layout",
+        { attrs: { row: "" } },
         _vm._l(_vm.todolists, function(todolist) {
           return _c("todolist", {
             key: todolist.id,
@@ -8430,25 +8344,39 @@ var render = function() {
           _c(
             "div",
             { staticClass: "hidden-sm-and-down" },
-            _vm._l(_vm.items, function(item) {
-              return item.show
+            [
+              _vm.name
                 ? _c(
-                    "router-link",
-                    { key: item.title, attrs: { tag: "span", to: item.to } },
+                    "span",
+                    { staticClass: "mx-2" },
                     [
-                      _c("v-btn", { attrs: { text: "" } }, [
-                        _vm._v(
-                          "\n                    " +
-                            _vm._s(item.title) +
-                            "\n                "
-                        )
-                      ])
+                      _c("v-icon", [_vm._v("mdi-account")]),
+                      _vm._v(" " + _vm._s(_vm.name))
                     ],
                     1
                   )
-                : _vm._e()
-            }),
-            1
+                : _vm._e(),
+              _vm._v(" "),
+              _vm._l(_vm.items, function(item) {
+                return item.show
+                  ? _c(
+                      "router-link",
+                      { key: item.title, attrs: { tag: "span", to: item.to } },
+                      [
+                        _c("v-btn", { attrs: { text: "" } }, [
+                          _vm._v(
+                            "\n                    " +
+                              _vm._s(item.title) +
+                              "\n                "
+                          )
+                        ])
+                      ],
+                      1
+                    )
+                  : _vm._e()
+              })
+            ],
+            2
           )
         ],
         1
@@ -8456,169 +8384,6 @@ var render = function() {
     ],
     1
   )
-}
-var staticRenderFns = []
-render._withStripped = true
-
-
-
-/***/ }),
-
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/TodoForm.vue?vue&type=template&id=076b72d6&":
-/*!***********************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/TodoForm.vue?vue&type=template&id=076b72d6& ***!
-  \***********************************************************************************************************************************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("ValidationObserver", {
-    ref: "observer",
-    scopedSlots: _vm._u([
-      {
-        key: "default",
-        fn: function(ref) {
-          var validate = ref.validate
-          var handleSubmit = ref.handleSubmit
-          return [
-            _c(
-              "v-form",
-              {
-                ref: "form",
-                attrs: { name: "form" },
-                on: {
-                  submit: function($event) {
-                    $event.preventDefault()
-                    return handleSubmit(_vm.Submit)
-                  }
-                }
-              },
-              [
-                _c("v-card-title", [
-                  _c("span", { staticClass: "headline" }, [_vm._v("From")])
-                ]),
-                _vm._v(" "),
-                _c(
-                  "v-card-text",
-                  [
-                    _c(
-                      "v-container",
-                      [
-                        _c("ValidationProvider", {
-                          attrs: { name: "title", rules: "required|max:50" },
-                          scopedSlots: _vm._u(
-                            [
-                              {
-                                key: "default",
-                                fn: function(ref) {
-                                  var errors = ref.errors
-                                  return [
-                                    _c("v-text-field", {
-                                      staticClass: "mb-2",
-                                      attrs: {
-                                        label: "Title *",
-                                        outlined: "",
-                                        "error-messages": errors
-                                      },
-                                      model: {
-                                        value: _vm.form.title,
-                                        callback: function($$v) {
-                                          _vm.$set(_vm.form, "title", $$v)
-                                        },
-                                        expression: "form.title"
-                                      }
-                                    })
-                                  ]
-                                }
-                              }
-                            ],
-                            null,
-                            true
-                          )
-                        }),
-                        _vm._v(" "),
-                        _c("ValidationProvider", {
-                          attrs: { name: "details", rules: "max:250" },
-                          scopedSlots: _vm._u(
-                            [
-                              {
-                                key: "default",
-                                fn: function(ref) {
-                                  var errors = ref.errors
-                                  return [
-                                    _c("v-textarea", {
-                                      attrs: {
-                                        label: "Description",
-                                        outlined: "",
-                                        rows: "4",
-                                        "row-height": "15",
-                                        "hide-details": "",
-                                        "error-messages": errors
-                                      },
-                                      model: {
-                                        value: _vm.form.details,
-                                        callback: function($$v) {
-                                          _vm.$set(_vm.form, "details", $$v)
-                                        },
-                                        expression: "form.details"
-                                      }
-                                    })
-                                  ]
-                                }
-                              }
-                            ],
-                            null,
-                            true
-                          )
-                        })
-                      ],
-                      1
-                    )
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "v-card-actions",
-                  [
-                    _c("v-spacer"),
-                    _vm._v(" "),
-                    _c(
-                      "v-btn",
-                      {
-                        attrs: { color: "red lighten-2" },
-                        on: {
-                          click: function($event) {
-                            return _vm.$emit("hideModal")
-                          }
-                        }
-                      },
-                      [_vm._v("EClose")]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "v-btn",
-                      { attrs: { color: "blue lighten-2", type: "submit" } },
-                      [_vm._v("Save")]
-                    )
-                  ],
-                  1
-                )
-              ],
-              1
-            )
-          ]
-        }
-      }
-    ])
-  })
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -8642,46 +8407,143 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "v-col",
-    { attrs: { cols: "6", md: "6", sm: "12" } },
-    [
-      _c(
-        "v-card",
-        { attrs: { cols: "6", color: "grey lighten-3" } },
+  return _vm.todolist.done === 0
+    ? _c(
+        "v-flex",
+        { attrs: { xs12: "", sm12: "", md6: "", "mb-2": "" } },
         [
           _c(
-            "v-row",
+            "v-card",
+            { attrs: { color: "grey lighten-3", tile: "" } },
             [
-              _c("v-col", { attrs: { cols: "9", md: "9" } }, [
-                _c("h2", { staticClass: "mx-3" }, [
-                  _vm._v(
-                    "\n                        " +
-                      _vm._s(_vm.todolist.title) +
-                      "\n                    "
-                  )
-                ])
-              ]),
-              _vm._v(" "),
               _c(
-                "v-col",
-                { attrs: { cols: "1", md: "1" } },
+                "v-layout",
+                { attrs: { row: "", "pt-2": "" } },
                 [
+                  _c("v-flex", { attrs: { xs9: "" } }, [
+                    _c("h2", { staticClass: "mx-3" }, [
+                      _vm._v(
+                        "\n                " +
+                          _vm._s(_vm.todolist.title) +
+                          "\n            "
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
                   _c(
-                    "v-btn",
-                    {
-                      staticClass: "mx-6",
-                      attrs: { fab: "", dark: "", small: "", color: "cyan" },
-                      on: {
-                        click: function($event) {
-                          return _vm.edit(_vm.todolist.id)
-                        }
-                      }
-                    },
+                    "v-flex",
+                    { attrs: { xs1: "", "mr-1": "" } },
                     [
-                      _c("v-icon", { attrs: { dark: "" } }, [
-                        _vm._v("mdi-pencil")
-                      ])
+                      _c(
+                        "v-tooltip",
+                        {
+                          attrs: { bottom: "" },
+                          scopedSlots: _vm._u(
+                            [
+                              {
+                                key: "activator",
+                                fn: function(ref) {
+                                  var on = ref.on
+                                  var attrs = ref.attrs
+                                  return [
+                                    _c(
+                                      "v-btn",
+                                      _vm._g(
+                                        _vm._b(
+                                          {
+                                            attrs: {
+                                              fab: "",
+                                              dark: "",
+                                              small: "",
+                                              color: "cyan"
+                                            },
+                                            on: {
+                                              click: function($event) {
+                                                return _vm.edit(_vm.todolist.id)
+                                              }
+                                            }
+                                          },
+                                          "v-btn",
+                                          attrs,
+                                          false
+                                        ),
+                                        on
+                                      ),
+                                      [
+                                        _c("v-icon", { attrs: { dark: "" } }, [
+                                          _vm._v("mdi-pencil")
+                                        ])
+                                      ],
+                                      1
+                                    )
+                                  ]
+                                }
+                              }
+                            ],
+                            null,
+                            false,
+                            2249081525
+                          )
+                        },
+                        [_vm._v(" "), _c("span", [_vm._v("Edit this todo")])]
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-flex",
+                    { attrs: { xs1: "" } },
+                    [
+                      _c(
+                        "v-tooltip",
+                        {
+                          attrs: { bottom: "" },
+                          scopedSlots: _vm._u(
+                            [
+                              {
+                                key: "activator",
+                                fn: function(ref) {
+                                  var on = ref.on
+                                  var attrs = ref.attrs
+                                  return [
+                                    _c(
+                                      "v-btn",
+                                      _vm._g(
+                                        _vm._b(
+                                          {
+                                            attrs: {
+                                              fab: "",
+                                              dark: "",
+                                              small: "",
+                                              color: "success"
+                                            },
+                                            on: { click: _vm.destroy }
+                                          },
+                                          "v-btn",
+                                          attrs,
+                                          false
+                                        ),
+                                        on
+                                      ),
+                                      [
+                                        _c("v-icon", { attrs: { dark: "" } }, [
+                                          _vm._v("mdi-check")
+                                        ])
+                                      ],
+                                      1
+                                    )
+                                  ]
+                                }
+                              }
+                            ],
+                            null,
+                            false,
+                            613719569
+                          )
+                        },
+                        [_vm._v(" "), _c("span", [_vm._v("Done this todo")])]
+                      )
                     ],
                     1
                   )
@@ -8690,55 +8552,200 @@ var render = function() {
               ),
               _vm._v(" "),
               _c(
-                "v-col",
-                { attrs: { cols: "1", md: "1" } },
+                "v-chip",
+                {
+                  staticClass: "mx-2",
+                  attrs: { color: "primary", outlined: "" }
+                },
                 [
+                  _c("v-icon", [_vm._v("mdi-plus-circle-outline")]),
+                  _vm._v(" " + _vm._s(_vm.todolist.created_at) + " "),
+                  _c("v-icon", [_vm._v("mdi-pencil-circle-outline")]),
+                  _vm._v(_vm._s(_vm.todolist.updated_at) + "\n        ")
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c("v-card-text", { staticClass: "black--text" }, [
+                _vm._v(
+                  "\n            " + _vm._s(_vm.todolist.details) + "\n        "
+                )
+              ])
+            ],
+            1
+          )
+        ],
+        1
+      )
+    : _c(
+        "v-flex",
+        { attrs: { xs12: "", sm12: "", md6: "", "mb-2": "" } },
+        [
+          _c(
+            "v-card",
+            { attrs: { color: "green lighten-4", tile: "" } },
+            [
+              _c(
+                "v-layout",
+                { attrs: { row: "", "pt-2": "" } },
+                [
+                  _c("v-flex", { attrs: { xs9: "" } }, [
+                    _c(
+                      "h2",
+                      { staticClass: "mx-3 text-decoration-line-through" },
+                      [
+                        _vm._v(
+                          "\n                    " +
+                            _vm._s(_vm.todolist.title) +
+                            "\n                "
+                        )
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
                   _c(
-                    "v-btn",
-                    {
-                      staticClass: "mx-6",
-                      attrs: { fab: "", dark: "", small: "", color: "red" },
-                      on: { click: _vm.destroy }
-                    },
+                    "v-flex",
+                    { attrs: { xs1: "", "mr-1": "" } },
                     [
-                      _c("v-icon", { attrs: { dark: "" } }, [
-                        _vm._v("mdi-delete")
-                      ])
+                      _c(
+                        "v-tooltip",
+                        {
+                          attrs: { left: "" },
+                          scopedSlots: _vm._u([
+                            {
+                              key: "activator",
+                              fn: function(ref) {
+                                var on = ref.on
+                                var attrs = ref.attrs
+                                return [
+                                  _c(
+                                    "v-btn",
+                                    _vm._g(
+                                      _vm._b(
+                                        {
+                                          attrs: {
+                                            fab: "",
+                                            dark: "",
+                                            small: "",
+                                            color: "orange"
+                                          },
+                                          on: {
+                                            click: function($event) {
+                                              return _vm.edit(_vm.todolist.id)
+                                            }
+                                          }
+                                        },
+                                        "v-btn",
+                                        attrs,
+                                        false
+                                      ),
+                                      on
+                                    ),
+                                    [
+                                      _c("v-icon", { attrs: { dark: "" } }, [
+                                        _vm._v("mdi-close")
+                                      ])
+                                    ],
+                                    1
+                                  )
+                                ]
+                              }
+                            }
+                          ])
+                        },
+                        [_vm._v(" "), _c("span", [_vm._v("Un-Done this todo")])]
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-flex",
+                    { attrs: { xs1: "" } },
+                    [
+                      _c(
+                        "v-tooltip",
+                        {
+                          attrs: { right: "" },
+                          scopedSlots: _vm._u([
+                            {
+                              key: "activator",
+                              fn: function(ref) {
+                                var on = ref.on
+                                var attrs = ref.attrs
+                                return [
+                                  _c(
+                                    "v-btn",
+                                    _vm._g(
+                                      _vm._b(
+                                        {
+                                          attrs: {
+                                            fab: "",
+                                            dark: "",
+                                            small: "",
+                                            color: "red"
+                                          },
+                                          on: { click: _vm.destroy }
+                                        },
+                                        "v-btn",
+                                        attrs,
+                                        false
+                                      ),
+                                      on
+                                    ),
+                                    [
+                                      _c("v-icon", { attrs: { dark: "" } }, [
+                                        _vm._v("mdi-delete")
+                                      ])
+                                    ],
+                                    1
+                                  )
+                                ]
+                              }
+                            }
+                          ])
+                        },
+                        [_vm._v(" "), _c("span", [_vm._v("Delete this todo")])]
+                      )
                     ],
                     1
                   )
                 ],
                 1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-chip",
+                {
+                  staticClass: "mx-2",
+                  attrs: { color: "primary", outlined: "" }
+                },
+                [
+                  _c("v-icon", [_vm._v("mdi-plus-circle-outline")]),
+                  _vm._v(" " + _vm._s(_vm.todolist.created_at) + " "),
+                  _c("v-icon", [_vm._v("mdi-pencil-circle-outline")]),
+                  _vm._v(_vm._s(_vm.todolist.updated_at) + "\n        ")
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-card-text",
+                { staticClass: "black--text text-decoration-line-through" },
+                [
+                  _vm._v(
+                    "\n            " +
+                      _vm._s(_vm.todolist.details) +
+                      "\n        "
+                  )
+                ]
               )
             ],
             1
-          ),
-          _vm._v(" "),
-          _c(
-            "v-chip",
-            { staticClass: "mx-2", attrs: { color: "primary", outlined: "" } },
-            [
-              _c("v-icon", [_vm._v("mdi-plus-circle-outline")]),
-              _vm._v(" " + _vm._s(_vm.todolist.created_at) + " "),
-              _c("v-icon", [_vm._v("mdi-pencil-circle-outline")]),
-              _vm._v(_vm._s(_vm.todolist.updated_at) + "\n            ")
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c("v-card-text", { staticClass: "black--text" }, [
-            _vm._v(
-              "\n                " +
-                _vm._s(_vm.todolist.details) +
-                "\n            "
-            )
-          ])
+          )
         ],
         1
       )
-    ],
-    1
-  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -68574,75 +68581,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Toolbar_vue_vue_type_template_id_57f16e6e___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Toolbar_vue_vue_type_template_id_57f16e6e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
-
-
-
-/***/ }),
-
-/***/ "./resources/js/components/TodoForm.vue":
-/*!**********************************************!*\
-  !*** ./resources/js/components/TodoForm.vue ***!
-  \**********************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _TodoForm_vue_vue_type_template_id_076b72d6___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./TodoForm.vue?vue&type=template&id=076b72d6& */ "./resources/js/components/TodoForm.vue?vue&type=template&id=076b72d6&");
-/* harmony import */ var _TodoForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./TodoForm.vue?vue&type=script&lang=js& */ "./resources/js/components/TodoForm.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-
-
-
-
-
-/* normalize component */
-
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _TodoForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _TodoForm_vue_vue_type_template_id_076b72d6___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _TodoForm_vue_vue_type_template_id_076b72d6___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
-  false,
-  null,
-  null,
-  null
-  
-)
-
-/* hot reload */
-if (false) { var api; }
-component.options.__file = "resources/js/components/TodoForm.vue"
-/* harmony default export */ __webpack_exports__["default"] = (component.exports);
-
-/***/ }),
-
-/***/ "./resources/js/components/TodoForm.vue?vue&type=script&lang=js&":
-/*!***********************************************************************!*\
-  !*** ./resources/js/components/TodoForm.vue?vue&type=script&lang=js& ***!
-  \***********************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_TodoForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./TodoForm.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/TodoForm.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_TodoForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
-
-/***/ }),
-
-/***/ "./resources/js/components/TodoForm.vue?vue&type=template&id=076b72d6&":
-/*!*****************************************************************************!*\
-  !*** ./resources/js/components/TodoForm.vue?vue&type=template&id=076b72d6& ***!
-  \*****************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TodoForm_vue_vue_type_template_id_076b72d6___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./TodoForm.vue?vue&type=template&id=076b72d6& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/TodoForm.vue?vue&type=template&id=076b72d6&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TodoForm_vue_vue_type_template_id_076b72d6___WEBPACK_IMPORTED_MODULE_0__["render"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TodoForm_vue_vue_type_template_id_076b72d6___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

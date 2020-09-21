@@ -41,7 +41,7 @@
 
             <v-spacer></v-spacer>
             <div class="hidden-sm-and-down">
-
+                <span class="mx-2" v-if="name"><v-icon>mdi-account</v-icon> {{name}}</span>
                 <router-link
                     tag="span"
                     v-for="item in items"

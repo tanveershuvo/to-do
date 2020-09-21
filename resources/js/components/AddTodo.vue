@@ -52,7 +52,6 @@
 
 <script>
 
-import todoform from "./TodoForm"
 import {extend, setInteractionMode, ValidationObserver, ValidationProvider} from "vee-validate"
 import {max, required} from "vee-validate/dist/rules"
 import User from "../Helpers/User";
@@ -70,7 +69,7 @@ extend("max", {
 });
 export default {
     components: {
-        todoform,ValidationProvider,
+        ValidationProvider,
         ValidationObserver
     },
     name: "AddTodo",
