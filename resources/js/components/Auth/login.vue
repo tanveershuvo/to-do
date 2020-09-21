@@ -8,7 +8,7 @@
       >
         <ValidationObserver ref="observer" v-slot="{ validate, handleSubmit }">
           <v-form @submit.prevent="handleSubmit(Submit)">
-          <h1 class="pt-4 text-center">Login Form</h1>
+          <h1 class="pt-4 text-center">Log In Form</h1>
           <v-row class="px-4">
           <v-col sm="6" md="10">
               <div v-if="errorMessage" >

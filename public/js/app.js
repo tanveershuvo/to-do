@@ -7330,7 +7330,7 @@ var render = function() {
                       },
                       [
                         _c("h1", { staticClass: "pt-4 text-center" }, [
-                          _vm._v("Login Form")
+                          _vm._v("Log In Form")
                         ]),
                         _vm._v(" "),
                         _c(
