@@ -1,5 +1,5 @@
 <template>
-    <v-card>
+    <v-container fluid ma-0 pa-0 fill-height>
         <v-navigation-drawer
             v-model="drawer"
             app
@@ -14,7 +14,7 @@
             </v-list-item>
             <v-divider></v-divider>
             <v-list>
-            <v-list-item
+                <v-list-item
                 v-for="item in items"
                 :key="item.title"
                 :to="item.to"
@@ -31,32 +31,31 @@
             </v-list-item>
             </v-list>
         </v-navigation-drawer>
-
-        <v-toolbar color="grey lighten-3"
-                   fixed>
-            <v-app-bar-nav-icon @click.stop="drawer = !drawer" class="hidden-md-and-up" ></v-app-bar-nav-icon>
-            <v-toolbar-title>
+            <v-toolbar color="grey lighten-3" class="px-md-15" >
+                <v-app-bar-nav-icon @click.stop="drawer = !drawer" class="hidden-md-and-up" ></v-app-bar-nav-icon>
+                <v-toolbar-title>
                     Simple to-do
-            </v-toolbar-title>
+                </v-toolbar-title>
+                <v-spacer></v-spacer>
+                <div class="hidden-sm-and-down">
+                    <span class="mx-2" v-if="name"><v-icon>mdi-account</v-icon> {{name}}</span>
+                    <router-link
+                        tag="span"
+                        v-for="item in items"
+                        :key="item.title"
+                        :to="item.to"
+                        v-if="item.show"
+                    >
+                        <v-btn text>
+                            {{item.title}}
+                        </v-btn>
+                    </router-link>
+                </div>
+            </v-toolbar>
 
-            <v-spacer></v-spacer>
-            <div class="hidden-sm-and-down">
-                <span class="mx-2" v-if="name"><v-icon>mdi-account</v-icon> {{name}}</span>
-                <router-link
-                    tag="span"
-                    v-for="item in items"
-                    :key="item.title"
-                    :to="item.to"
-                    v-if="item.show"
-                >
-                    <v-btn text>
-                        {{item.title}}
-                    </v-btn>
-                </router-link>
-            </div>
-        </v-toolbar>
 
-    </v-card>
+    </v-container>
+
 
 </template>
 

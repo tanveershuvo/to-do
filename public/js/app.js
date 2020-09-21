@@ -2814,7 +2814,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -8230,7 +8229,8 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "v-card",
+    "v-container",
+    { attrs: { fluid: "", "ma-0": "", "pa-0": "", "fill-height": "" } },
     [
       _c(
         "v-navigation-drawer",
@@ -8323,7 +8323,7 @@ var render = function() {
       _vm._v(" "),
       _c(
         "v-toolbar",
-        { attrs: { color: "grey lighten-3", fixed: "" } },
+        { staticClass: "px-md-15", attrs: { color: "grey lighten-3" } },
         [
           _c("v-app-bar-nav-icon", {
             staticClass: "hidden-md-and-up",
@@ -8336,7 +8336,7 @@ var render = function() {
           }),
           _vm._v(" "),
           _c("v-toolbar-title", [
-            _vm._v("\n                Simple to-do\n        ")
+            _vm._v("\n                Simple to-do\n            ")
           ]),
           _vm._v(" "),
           _c("v-spacer"),
@@ -8365,9 +8365,9 @@ var render = function() {
                       [
                         _c("v-btn", { attrs: { text: "" } }, [
                           _vm._v(
-                            "\n                    " +
+                            "\n                        " +
                               _vm._s(item.title) +
-                              "\n                "
+                              "\n                    "
                           )
                         ])
                       ],
