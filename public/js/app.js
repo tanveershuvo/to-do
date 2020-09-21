@@ -2141,6 +2141,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -2274,6 +2278,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
 //
 //
 //
@@ -7295,11 +7300,14 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "v-container",
-    { staticClass: "grey lighten-5 text-center", attrs: { fluid: "" } },
+    { staticClass: "grey lighten-5", attrs: { fluid: "" } },
     [
       _c(
         "v-card",
-        { staticClass: "mt-10 text-center", attrs: { "max-width": "700" } },
+        {
+          staticClass: "mx-auto mt-15",
+          attrs: { elevation: "12", height: "auto", "max-width": "600" }
+        },
         [
           _c("ValidationObserver", {
             ref: "observer",
@@ -7321,40 +7329,39 @@ var render = function() {
                         }
                       },
                       [
-                        _c("h1", [_vm._v("Login Form")]),
+                        _c("h1", { staticClass: "pt-4 text-center" }, [
+                          _vm._v("Login Form")
+                        ]),
                         _vm._v(" "),
                         _c(
                           "v-row",
+                          { staticClass: "px-4" },
                           [
-                            _c(
-                              "v-col",
-                              { attrs: { cols: "12", sm: "6", md: "10" } },
-                              [
-                                _vm.errorMessage
-                                  ? _c(
-                                      "div",
-                                      [
-                                        _c(
-                                          "v-alert",
-                                          { attrs: { type: "error" } },
-                                          [
-                                            _vm._v(
-                                              "\n                    " +
-                                                _vm._s(_vm.errorMessage) +
-                                                "\n                "
-                                            )
-                                          ]
-                                        )
-                                      ],
-                                      1
-                                    )
-                                  : _vm._e()
-                              ]
-                            ),
+                            _c("v-col", { attrs: { sm: "6", md: "10" } }, [
+                              _vm.errorMessage
+                                ? _c(
+                                    "div",
+                                    [
+                                      _c(
+                                        "v-alert",
+                                        { attrs: { type: "error" } },
+                                        [
+                                          _vm._v(
+                                            "\n                    " +
+                                              _vm._s(_vm.errorMessage) +
+                                              "\n                "
+                                          )
+                                        ]
+                                      )
+                                    ],
+                                    1
+                                  )
+                                : _vm._e()
+                            ]),
                             _vm._v(" "),
                             _c(
                               "v-col",
-                              { attrs: { cols: "12", sm: "6", md: "10" } },
+                              { attrs: { cols: "12" } },
                               [
                                 _c("ValidationProvider", {
                                   attrs: {
@@ -7407,7 +7414,7 @@ var render = function() {
                             _vm._v(" "),
                             _c(
                               "v-col",
-                              { attrs: { cols: "12", sm: "6", md: "10" } },
+                              { attrs: { cols: "12" } },
                               [
                                 _c("ValidationProvider", {
                                   attrs: {
@@ -7473,17 +7480,16 @@ var render = function() {
                             _vm._v(" "),
                             _c(
                               "v-col",
-                              { attrs: { cols: "12", sm: "6", md: "10" } },
+                              {
+                                staticClass: "text-center",
+                                attrs: { cols: "12" }
+                              },
                               [
                                 _c(
                                   "v-btn",
                                   {
-                                    staticClass: "pa-5",
-                                    attrs: {
-                                      color: "success",
-                                      type: "submit",
-                                      outlined: ""
-                                    }
+                                    staticClass: "py-5",
+                                    attrs: { color: "success", type: "submit" }
                                   },
                                   [_vm._v("Log in")]
                                 )
@@ -7532,10 +7538,14 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "v-container",
+    { staticClass: "grey lighten-5", attrs: { fluid: "" } },
     [
       _c(
         "v-card",
-        { staticClass: "ma-1 pa-3", attrs: { outlined: "", tile: "" } },
+        {
+          staticClass: "mx-auto mt-5 mb-15",
+          attrs: { elevation: "12", height: "auto", "max-width": "600" }
+        },
         [
           _c("ValidationObserver", {
             ref: "observer",
@@ -7557,43 +7567,39 @@ var render = function() {
                         }
                       },
                       [
-                        _c("h1", { staticClass: "text-center" }, [
+                        _c("h1", { staticClass: "pt-4 text-center" }, [
                           _vm._v("Sign Up Form")
                         ]),
                         _vm._v(" "),
                         _c(
                           "v-row",
-                          { staticClass: "justify-center" },
+                          { staticClass: "px-4 justify-center" },
                           [
-                            _c(
-                              "v-col",
-                              { attrs: { cols: "12", sm: "6", md: "8" } },
-                              [
-                                _vm.errorMessage
-                                  ? _c(
-                                      "div",
-                                      [
-                                        _c(
-                                          "v-alert",
-                                          { attrs: { type: "error" } },
-                                          [
-                                            _vm._v(
-                                              "\n                                    " +
-                                                _vm._s(_vm.errorMessage) +
-                                                "\n                                "
-                                            )
-                                          ]
-                                        )
-                                      ],
-                                      1
-                                    )
-                                  : _vm._e()
-                              ]
-                            ),
+                            _c("v-col", { attrs: { cols: "12" } }, [
+                              _vm.errorMessage
+                                ? _c(
+                                    "div",
+                                    [
+                                      _c(
+                                        "v-alert",
+                                        { attrs: { type: "error" } },
+                                        [
+                                          _vm._v(
+                                            "\n                                        " +
+                                              _vm._s(_vm.errorMessage) +
+                                              "\n                                    "
+                                          )
+                                        ]
+                                      )
+                                    ],
+                                    1
+                                  )
+                                : _vm._e()
+                            ]),
                             _vm._v(" "),
                             _c(
                               "v-col",
-                              { attrs: { cols: "12", sm: "6", md: "8" } },
+                              { attrs: { cols: "12" } },
                               [
                                 _c("ValidationProvider", {
                                   attrs: { name: "name", rules: "required" },
@@ -7644,7 +7650,7 @@ var render = function() {
                             _vm._v(" "),
                             _c(
                               "v-col",
-                              { attrs: { cols: "12", sm: "6", md: "8" } },
+                              { attrs: { cols: "12" } },
                               [
                                 _c("ValidationProvider", {
                                   attrs: {
@@ -7698,7 +7704,7 @@ var render = function() {
                             _vm._v(" "),
                             _c(
                               "v-col",
-                              { attrs: { cols: "12", sm: "6", md: "8" } },
+                              { attrs: { cols: "12" } },
                               [
                                 _c("ValidationProvider", {
                                   attrs: {
@@ -7765,7 +7771,7 @@ var render = function() {
                             _vm._v(" "),
                             _c(
                               "v-col",
-                              { attrs: { cols: "12", sm: "6", md: "8" } },
+                              { attrs: { cols: "12" } },
                               [
                                 _c("ValidationProvider", {
                                   attrs: { name: "confirm", rules: "required" },
@@ -7832,17 +7838,16 @@ var render = function() {
                             _vm._v(" "),
                             _c(
                               "v-col",
-                              { attrs: { cols: "12", sm: "6", md: "8" } },
+                              {
+                                staticClass: "text-center",
+                                attrs: { cols: "12" }
+                              },
                               [
                                 _c(
                                   "v-btn",
                                   {
-                                    staticClass: "pa-6",
-                                    attrs: {
-                                      color: "primary",
-                                      outlined: "",
-                                      type: "submit"
-                                    }
+                                    staticClass: "py-6",
+                                    attrs: { color: "primary", type: "submit" }
                                   },
                                   [_vm._v("Sign up")]
                                 )

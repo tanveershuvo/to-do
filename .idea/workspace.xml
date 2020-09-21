@@ -21,16 +21,9 @@
   <component name="ChangeListManager">
     <list default="true" id="9d9cea49-3100-4cc1-ac29-aaa87bde53b7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TodoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TodoController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/JwtMiddleware.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/JwtMiddleware.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/Auth/login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Auth/login.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/EditTodo.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/EditTodo.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/Home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Home.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/Partials/AppFooter.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Partials/AppFooter.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/Partials/Toolbar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Partials/Toolbar.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/Todolist.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Todolist.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/Auth/signup.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Auth/signup.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -223,7 +216,8 @@
       <workItem from="1600192836761" duration="5767000" />
       <workItem from="1600204130713" duration="1431000" />
       <workItem from="1600544227458" duration="2311000" />
-      <workItem from="1600595395750" duration="15388000" />
+      <workItem from="1600595395750" duration="15708000" />
+      <workItem from="1600681265729" duration="2626000" />
     </task>
     <servers />
   </component>

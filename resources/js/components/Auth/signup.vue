@@ -1,23 +1,24 @@
 <template>
 
-        <v-container>
+    <v-container class="grey lighten-5" fluid>
             <v-card
-                class="ma-1 pa-3"
-                outlined
-                tile
+                class="mx-auto mt-5 mb-15"
+                elevation="12"
+                height="auto"
+                max-width="600"
             >
                     <ValidationObserver ref="observer" v-slot="{ validate, handleSubmit }">
                         <v-form @submit.prevent="handleSubmit(Register)">
-                        <h1 class="text-center">Sign Up Form</h1>
-                            <v-row class="justify-center">
-                                <v-col cols="12" sm="6" md="8">
+                        <h1 class="pt-4 text-center">Sign Up Form</h1>
+                            <v-row class="px-4 justify-center">
+                                <v-col cols="12">
                                     <div v-if="errorMessage">
                                         <v-alert type="error">
                                             {{errorMessage}}
                                         </v-alert>
                                     </div>
                                 </v-col>
-                                <v-col cols="12" sm="6" md="8">
+                                <v-col cols="12">
                                     <ValidationProvider v-slot="{ errors }" name="name" rules="required">
                                         <v-text-field
                                             v-model="form.name"
@@ -30,7 +31,7 @@
                                         <span class="red--text">{{ errors[0] }}</span>
                                     </ValidationProvider>
                                 </v-col>
-                                <v-col cols="12" sm="6" md="8" >
+                                <v-col cols="12">
                                     <ValidationProvider v-slot="{ errors }" name="email" rules="required|email">
                                         <v-text-field
                                             v-model="form.email"
@@ -44,7 +45,7 @@
 
                                     </ValidationProvider>
                                 </v-col>
-                                <v-col cols="12" sm="6" md="8" >
+                                <v-col cols="12">
                                     <ValidationProvider v-slot="{ errors }" name="password" rules="required||password:@confirm|min:6">
                                         <v-text-field
                                             v-model="form.password"
@@ -60,7 +61,7 @@
                                         <span class="red--text">{{ errors[0] }}</span>
                                     </ValidationProvider>
                                 </v-col>
-                                <v-col cols="12" sm="6" md="8" >
+                                <v-col cols="12" >
                                     <ValidationProvider v-slot="{ errors }" name="confirm" rules="required">
                                         <v-text-field
                                             v-model="form.password_confirmation"
@@ -76,8 +77,8 @@
                                         <span class="red--text">{{ errors[0] }}</span>
                                     </ValidationProvider>
                                 </v-col>
-                                <v-col cols="12" sm="6" md="8">
-                                    <v-btn color="primary" class="pa-6" outlined type="submit">Sign up</v-btn>
+                                <v-col cols="12" class="text-center">
+                                    <v-btn color="primary" class="py-6" type="submit">Sign up</v-btn>
                                 </v-col>
                             </v-row>
                         </v-form>
