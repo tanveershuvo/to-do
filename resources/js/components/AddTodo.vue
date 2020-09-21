@@ -10,7 +10,7 @@
                 <ValidationObserver ref="observer" v-slot="{ validate, handleSubmit }">
                     <v-form ref="form" name="form" @submit.prevent="handleSubmit(submit)">
                         <v-card-title>
-                            <span class="headline">From</span>
+                            <span class="headline">Add New To Do</span>
                         </v-card-title>
                         <v-card-text>
                             <v-container>
