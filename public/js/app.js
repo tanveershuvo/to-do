@@ -7129,7 +7129,7 @@ var render = function() {
                           [
                             _c("v-card-title", [
                               _c("span", { staticClass: "headline" }, [
-                                _vm._v("From")
+                                _vm._v("Add New To Do")
                               ])
                             ]),
                             _vm._v(" "),
@@ -7937,7 +7937,7 @@ var render = function() {
                           [
                             _c("v-card-title", [
                               _c("span", { staticClass: "headline" }, [
-                                _vm._v("From")
+                                _vm._v("Edit To Do")
                               ])
                             ]),
                             _vm._v(" "),
