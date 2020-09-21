@@ -3,6 +3,9 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+        @if (config('app.env')=='production')
+            <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+        @endif
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <title>To Do</title>
         <link rel="stylesheet" href="{{mix('css/app.css')}}">
