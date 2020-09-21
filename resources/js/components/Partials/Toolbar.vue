@@ -1,19 +1,46 @@
 <template>
-    <v-card
-        color="blue lighten-4"
-        flat
-        height="50px"
-        tile
-    >
-        <v-app-bar color="grey lighten-3"
+    <v-card>
+        <v-navigation-drawer
+            v-model="drawer"
+            app
+        >
+            <v-list-item>
+                <v-list-item-content>
+                    <v-list-item-title><v-icon>mdi-account</v-icon> {{name}}</v-list-item-title>
+                </v-list-item-content>
+                <v-btn justify-end shrink text small @click.stop="drawer = !drawer" >
+                    <v-icon color="red">mdi-close</v-icon>
+                </v-btn>
+            </v-list-item>
+            <v-divider></v-divider>
+            <v-list>
+            <v-list-item
+                v-for="item in items"
+                :key="item.title"
+                :to="item.to"
+                v-if="item.show"
+                link
+                class="ma-2"
+            >
+                <v-list-item-icon>
+                    <v-icon>{{ item.icon }}</v-icon>
+                </v-list-item-icon>
+                <v-list-item-content>
+                    <v-list-item-title>{{ item.title }}</v-list-item-title>
+                </v-list-item-content>
+            </v-list-item>
+            </v-list>
+        </v-navigation-drawer>
+
+        <v-toolbar color="grey lighten-3"
                    fixed>
-            <v-app-bar-nav-icon></v-app-bar-nav-icon>
+            <v-app-bar-nav-icon @click.stop="drawer = !drawer" class="hidden-md-and-up" ></v-app-bar-nav-icon>
             <v-toolbar-title>
                     Simple to-do
             </v-toolbar-title>
 
             <v-spacer></v-spacer>
-            <div class="">
+            <div class="hidden-sm-and-down">
 
                 <router-link
                     tag="span"
@@ -27,8 +54,10 @@
                     </v-btn>
                 </router-link>
             </div>
-        </v-app-bar>
+        </v-toolbar>
+
     </v-card>
+
 </template>
 
 <script>
@@ -38,8 +67,10 @@ export default {
     name: "toolbar",
     data(){
         return {
+            drawer: false,
+            name: User.name(),
             items:[
-                { title:'Home',to:'/home',show:User.loggedIn()},
+                { title:'Home',to:'/home', icon: 'mdi-view-dashboard',show:User.loggedIn()},
                 { title:'Login',to:'/',show:!User.loggedIn()},
                 { title:'SignUp',to:'/signup',show:!User.loggedIn()},
                 { title:'Logout',to:'/logout',show:User.loggedIn()},

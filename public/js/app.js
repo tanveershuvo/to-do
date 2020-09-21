@@ -2792,15 +2792,47 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "toolbar",
   data: function data() {
     return {
+      drawer: false,
+      name: _Helpers_User__WEBPACK_IMPORTED_MODULE_0__["default"].name(),
       items: [{
         title: 'Home',
         to: '/home',
+        icon: 'mdi-view-dashboard',
         show: _Helpers_User__WEBPACK_IMPORTED_MODULE_0__["default"].loggedIn()
       }, {
         title: 'Login',
@@ -8216,7 +8248,7 @@ var render = function() {
     "v-footer",
     {
       staticClass: "grey darken-3 white--text text-center",
-      attrs: { tile: "", fixed: "", height: "50" }
+      attrs: { fixed: "" }
     },
     [
       _c("v-col", { attrs: { flat: "", tile: "" } }, [
@@ -8285,13 +8317,109 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "v-card",
-    { attrs: { color: "blue lighten-4", flat: "", height: "50px", tile: "" } },
     [
       _c(
-        "v-app-bar",
+        "v-navigation-drawer",
+        {
+          attrs: { app: "" },
+          model: {
+            value: _vm.drawer,
+            callback: function($$v) {
+              _vm.drawer = $$v
+            },
+            expression: "drawer"
+          }
+        },
+        [
+          _c(
+            "v-list-item",
+            [
+              _c(
+                "v-list-item-content",
+                [
+                  _c(
+                    "v-list-item-title",
+                    [
+                      _c("v-icon", [_vm._v("mdi-account")]),
+                      _vm._v(" " + _vm._s(_vm.name))
+                    ],
+                    1
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-btn",
+                {
+                  attrs: { "justify-end": "", shrink: "", text: "", small: "" },
+                  on: {
+                    click: function($event) {
+                      $event.stopPropagation()
+                      _vm.drawer = !_vm.drawer
+                    }
+                  }
+                },
+                [
+                  _c("v-icon", { attrs: { color: "red" } }, [
+                    _vm._v("mdi-close")
+                  ])
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c("v-divider"),
+          _vm._v(" "),
+          _c(
+            "v-list",
+            _vm._l(_vm.items, function(item) {
+              return item.show
+                ? _c(
+                    "v-list-item",
+                    {
+                      key: item.title,
+                      staticClass: "ma-2",
+                      attrs: { to: item.to, link: "" }
+                    },
+                    [
+                      _c(
+                        "v-list-item-icon",
+                        [_c("v-icon", [_vm._v(_vm._s(item.icon))])],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-list-item-content",
+                        [_c("v-list-item-title", [_vm._v(_vm._s(item.title))])],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                : _vm._e()
+            }),
+            1
+          )
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "v-toolbar",
         { attrs: { color: "grey lighten-3", fixed: "" } },
         [
-          _c("v-app-bar-nav-icon"),
+          _c("v-app-bar-nav-icon", {
+            staticClass: "hidden-md-and-up",
+            on: {
+              click: function($event) {
+                $event.stopPropagation()
+                _vm.drawer = !_vm.drawer
+              }
+            }
+          }),
           _vm._v(" "),
           _c("v-toolbar-title", [
             _vm._v("\n                Simple to-do\n        ")
@@ -8301,7 +8429,7 @@ var render = function() {
           _vm._v(" "),
           _c(
             "div",
-            {},
+            { staticClass: "hidden-sm-and-down" },
             _vm._l(_vm.items, function(item) {
               return item.show
                 ? _c(

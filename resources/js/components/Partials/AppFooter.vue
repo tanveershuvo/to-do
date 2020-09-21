@@ -1,8 +1,6 @@
 <template>
         <v-footer
-            tile
             fixed
-            height="50"
             class="grey darken-3 white--text text-center"
         >
             <v-col
