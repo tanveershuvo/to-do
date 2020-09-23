@@ -7,7 +7,7 @@
                             {{todolist.title}}
                         </h2>
                     </v-flex>
-                    <v-flex xs1 mr-1>
+                    <v-flex xs1>
                         <v-tooltip bottom>
                             <template v-slot:activator="{ on, attrs }">
                                 <v-btn
@@ -24,7 +24,7 @@
                             <span>Edit this todo</span>
                         </v-tooltip>
                     </v-flex>
-                    <v-flex xs1>
+                    <v-flex xs1 ml-1>
                         <v-tooltip bottom>
                             <template v-slot:activator="{ on, attrs }">
                                 <v-btn

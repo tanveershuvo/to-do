@@ -7,7 +7,7 @@
             <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
         @endif
         <meta name="csrf-token" content="{{ csrf_token() }}">
-        <title>To Do</title>
+        <title>Daily Task List</title>
         <link rel="stylesheet" href="{{mix('css/app.css')}}">
         <link href="https://cdn.jsdelivr.net/npm/@mdi/font@5.x/css/materialdesignicons.min.css" rel="stylesheet">
     </head>

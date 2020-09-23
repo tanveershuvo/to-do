@@ -1,5 +1,5 @@
 <template>
-    <v-container fluid ma-0 pa-0 fill-height>
+    <v-card fluid ma-0 pa-0 fill-height>
         <v-navigation-drawer
             v-model="drawer"
             app
@@ -54,7 +54,7 @@
             </v-toolbar>
 
 
-    </v-container>
+    </v-card>
 
 
 </template>
