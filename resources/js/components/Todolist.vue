@@ -1,6 +1,6 @@
 <template>
-            <v-flex v-if="todolist.done===0" xs12 sm12 md6 mb-2>
-                <v-card color="grey lighten-3" tile>
+            <v-flex v-if="todolist.done===0"  xs12 sm12 md6 mb-2>
+                <v-card color="grey lighten-3" v-on:dblclick.native ="doneTodo(todolist.id)" tile>
                     <v-layout row pt-2>
                     <v-flex xs9>
                         <h2 class="mx-3">
@@ -25,7 +25,7 @@
                         </v-tooltip>
                     </v-flex>
                     <v-flex xs1 ml-1>
-                        <v-tooltip bottom>
+                        <v-tooltip right>
                             <template v-slot:activator="{ on, attrs }">
                                 <v-btn
                                     fab
@@ -34,11 +34,11 @@
                                     v-bind="attrs"
                                     v-on="on"
                                     @click="destroy"
-                                    color="success">
-                                    <v-icon dark>mdi-check</v-icon>
+                                    color="red">
+                                    <v-icon dark>mdi-delete</v-icon>
                                 </v-btn>
                             </template>
-                            <span>Done this todo</span>
+                            <span>Delete this todo</span>
                         </v-tooltip>
                     </v-flex>
                     </v-layout>
@@ -56,7 +56,7 @@
             </v-flex>
 
             <v-flex v-else xs12 sm12 md6 mb-2>
-                <v-card color="green lighten-4" tile>
+                <v-card color="green lighten-4" v-on:dblclick.native ="undoneTodo(todolist.id)" tile>
                     <v-layout row pt-2>
                         <v-flex xs9>
                             <h2 class="mx-3 text-decoration-line-through">
@@ -64,20 +64,20 @@
                             </h2>
                         </v-flex>
                         <v-flex xs1 mr-1>
-                            <v-tooltip left>
+                            <v-tooltip bottom>
                                 <template v-slot:activator="{ on, attrs }">
                                     <v-btn
                                         fab
                                         dark
+                                        small
                                         v-bind="attrs"
                                         v-on="on"
-                                        small
                                         @click="edit(todolist.id)"
-                                        color="orange">
-                                        <v-icon dark>mdi-close</v-icon>
+                                        color="cyan">
+                                        <v-icon dark>mdi-pencil</v-icon>
                                     </v-btn>
                                 </template>
-                                <span>Un-Done this todo</span>
+                                <span>Edit this todo</span>
                             </v-tooltip>
                         </v-flex>
                         <v-flex xs1>
@@ -148,7 +148,13 @@ export default {
         },
         sendData(data){
             EventBus.$emit('editFormData', data)
-        }
+        },
+        doneTodo(id){
+            alert(id);
+        },
+        undoneTodo(id){
+            alert(id);
+        },
     }
 }
 </script>
