@@ -4,12 +4,12 @@
 
 Daily Task list is a simple to do list and a single page application where todos can easily maintained by user.
 
-# New Features!
+## New Features!
 
   - A new way of handling done todos.
   - Mobile friendly user interface.
 
-# Setup and Environment
+## Setup and Environment
 
 ### Pre-requisite
 * Composer 2.0
@@ -23,10 +23,9 @@ Daily Task list is a simple to do list and a single page application where todos
 2. Run  `Composer Install`
 3. Copy .env.example file and rename as .env
 4. Edit **.env** file. Add database information.
-5. Add `MIX_API_URL=http://127.0.0.1:8000` to .env file
-6. Run `php artisan migrate:fresh --seed`
-7. Run `npm run dev`
-8. To start development server, run `php artisan serve`
+5. Run `php artisan migrate:fresh --seed`
+6. Run `npm run dev`
+7. To start development server, run `php artisan serve`
 
 ### Credentials for login
 User Email| Password
@@ -34,7 +33,7 @@ User Email| Password
 tanveershuvos@gmail.com | 123456
 
 
-### Todos
+## Todos
 
  - Write MORE Tests
  - Add Night Mode
