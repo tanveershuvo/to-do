@@ -9,14 +9,30 @@ Daily Task list is a simple to do list and a single page application where todos
   - A new way of handling done todos.
   - Mobile friendly user interface.
 
-### Tech
+# Setup and Environment
 
-Daily Task list uses a number of open source projects to work properly:
+### Pre-requisite
+* Composer 2.0
+* Apache2/Xampp
+* Node v10.19.0
+* Npm 6.14.8
+* Mysql 15.1
 
-* Vue Js - a progressive framework for building user interfaces!
-* Vuetify - great UI boilerplate for modern web apps!
-* Laravel 7 - the most trendy php framework for the backend!
-* Tymon/JWT - JSON Web Token Authentication for Laravel!
+### Installation
+1. Download code from github master branch
+2. Run  `Composer Install`
+3. Copy .env.example file and rename as .env
+4. Edit **.env** file. Add database information.
+5. Add `MIX_API_URL=http://127.0.0.1:8000` to .env file
+6. Run `php artisan migrate:fresh --seed`
+7. Run `npm run dev`
+8. To start development server, run `php artisan serve`
+
+### Credentials for login
+User Email| Password
+------------ | -------------
+tanveershuvos@gmail.com | 123456
+
 
 ### Todos
 
